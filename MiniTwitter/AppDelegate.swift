@@ -10,11 +10,22 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-
-
+    var window: NSWindow!
+    var contentView: NSVisualEffectView!
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        window = NSApplication.shared().windows.last!
+        contentView = window.contentView as! NSVisualEffectView
+
+        WAYTheDarkSide.welcomeApplication({ 
+            self.window.appearance = NSAppearance.init(named: NSAppearanceNameVibrantDark)
+            self.contentView?.material = NSVisualEffectMaterial.dark
+        }, immediately: true)
+        
+        WAYTheDarkSide.outcastApplication({ 
+            self.window?.appearance = NSAppearance.init(named: NSAppearanceNameVibrantLight);
+            self.contentView.material = NSVisualEffectMaterial.light
+        }, immediately: true)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

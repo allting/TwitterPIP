@@ -11,6 +11,8 @@
 		0F76E0E71E86418A009600BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F76E0E61E86418A009600BA /* ViewController.swift */; };
 		0F76E0E91E86418A009600BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F76E0E81E86418A009600BA /* Assets.xcassets */; };
 		0F76E0EC1E86418A009600BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F76E0EA1E86418A009600BA /* Main.storyboard */; };
+		0F76E11F1E864E45009600BA /* WAYTheDarkSide.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F76E11E1E864E45009600BA /* WAYTheDarkSide.m */; };
+		71148E6A6DD0495EC0275695 /* Pods_MiniTwitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 486591CF4F3C21763E7F00C0 /* Pods_MiniTwitter.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,12 @@
 		0F76E0E81E86418A009600BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F76E0EB1E86418A009600BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0F76E0ED1E86418A009600BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F76E11D1E864E45009600BA /* WAYTheDarkSide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAYTheDarkSide.h; sourceTree = "<group>"; };
+		0F76E11E1E864E45009600BA /* WAYTheDarkSide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAYTheDarkSide.m; sourceTree = "<group>"; };
+		0F76E1201E864FE3009600BA /* MiniTwitter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MiniTwitter-Bridging-Header.h"; sourceTree = "<group>"; };
+		486591CF4F3C21763E7F00C0 /* Pods_MiniTwitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniTwitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F2548F3197BFFA20041964C /* Pods-MiniTwitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniTwitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiniTwitter/Pods-MiniTwitter.debug.xcconfig"; sourceTree = "<group>"; };
+		F2B9DD8F4C70ABAE62462BEF /* Pods-MiniTwitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniTwitter.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiniTwitter/Pods-MiniTwitter.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71148E6A6DD0495EC0275695 /* Pods_MiniTwitter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,8 +45,11 @@
 		0F76E0D81E86418A009600BA = {
 			isa = PBXGroup;
 			children = (
+				0F76E1171E864E0A009600BA /* Lib */,
 				0F76E0E31E86418A009600BA /* MiniTwitter */,
 				0F76E0E21E86418A009600BA /* Products */,
+				9BF7FCDC8C07EEC9474E44A7 /* Pods */,
+				9CBE1033AD82040C5F7E561E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,11 +66,47 @@
 			children = (
 				0F76E0E41E86418A009600BA /* AppDelegate.swift */,
 				0F76E0E61E86418A009600BA /* ViewController.swift */,
+				0F76E1201E864FE3009600BA /* MiniTwitter-Bridging-Header.h */,
 				0F76E0E81E86418A009600BA /* Assets.xcassets */,
 				0F76E0EA1E86418A009600BA /* Main.storyboard */,
 				0F76E0ED1E86418A009600BA /* Info.plist */,
 			);
 			path = MiniTwitter;
+			sourceTree = "<group>";
+		};
+		0F76E1171E864E0A009600BA /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				0F76E11C1E864E45009600BA /* WAYTheDarkSide */,
+			);
+			name = Lib;
+			sourceTree = "<group>";
+		};
+		0F76E11C1E864E45009600BA /* WAYTheDarkSide */ = {
+			isa = PBXGroup;
+			children = (
+				0F76E11D1E864E45009600BA /* WAYTheDarkSide.h */,
+				0F76E11E1E864E45009600BA /* WAYTheDarkSide.m */,
+			);
+			name = WAYTheDarkSide;
+			path = Lib/WAYTheDarkSide;
+			sourceTree = "<group>";
+		};
+		9BF7FCDC8C07EEC9474E44A7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6F2548F3197BFFA20041964C /* Pods-MiniTwitter.debug.xcconfig */,
+				F2B9DD8F4C70ABAE62462BEF /* Pods-MiniTwitter.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9CBE1033AD82040C5F7E561E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				486591CF4F3C21763E7F00C0 /* Pods_MiniTwitter.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -68,9 +116,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F76E0F01E86418A009600BA /* Build configuration list for PBXNativeTarget "MiniTwitter" */;
 			buildPhases = (
+				8E13B1D29B5BA11EECE16B43 /* [CP] Check Pods Manifest.lock */,
 				0F76E0DD1E86418A009600BA /* Sources */,
 				0F76E0DE1E86418A009600BA /* Frameworks */,
 				0F76E0DF1E86418A009600BA /* Resources */,
+				18004E754DC0741643501A19 /* [CP] Embed Pods Frameworks */,
+				2C733669FDC5D5D6ECD088C6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -128,12 +179,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		18004E754DC0741643501A19 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MiniTwitter/Pods-MiniTwitter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2C733669FDC5D5D6ECD088C6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MiniTwitter/Pods-MiniTwitter-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8E13B1D29B5BA11EECE16B43 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0F76E0DD1E86418A009600BA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				0F76E0E71E86418A009600BA /* ViewController.swift in Sources */,
+				0F76E11F1E864E45009600BA /* WAYTheDarkSide.m in Sources */,
 				0F76E0E51E86418A009600BA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,6 +344,7 @@
 		};
 		0F76E0F11E86418A009600BA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F2548F3197BFFA20041964C /* Pods-MiniTwitter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -252,12 +353,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.allting.MiniTwitter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MiniTwitter/MiniTwitter-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		0F76E0F21E86418A009600BA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2B9DD8F4C70ABAE62462BEF /* Pods-MiniTwitter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -266,6 +369,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.allting.MiniTwitter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MiniTwitter/MiniTwitter-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -289,6 +393,7 @@
 				0F76E0F21E86418A009600BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
