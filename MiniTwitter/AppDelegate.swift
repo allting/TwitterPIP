@@ -15,6 +15,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         window = NSApplication.shared().windows.last!
+        window.styleMask.insert(.fullSizeContentView)
+        window.titleVisibility = .hidden
+        window.titlebarAppearsTransparent = true
+        window.isMovableByWindowBackground = true
+        
         contentView = window.contentView as! NSVisualEffectView
         
 //        self.contentView?.blendingMode = NSVisualEffectBlendingMode.behindWindow
