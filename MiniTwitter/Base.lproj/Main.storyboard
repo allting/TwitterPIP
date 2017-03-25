@@ -685,7 +685,57 @@
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl" customClass="NSVisualEffectView">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="258"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MvV-i0-M9g">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="258"/>
+                                <clipView key="contentView" drawsBackground="NO" id="epz-2H-zmI">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="258"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <collectionView id="q5t-DY-EcT">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="258"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="vzP-U7-opn">
+                                                <size key="itemSize" width="50" height="50"/>
+                                            </collectionViewFlowLayout>
+                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </collectionView>
+                                    </subviews>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="qMT-Xh-uFg"/>
+                                </constraints>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="qqu-cl-z5T">
+                                    <rect key="frame" x="1" y="-15" width="0.0" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="g9x-5E-Ydp">
+                                    <rect key="frame" x="283" y="1" width="16" height="256"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="gwU-fs-Dfl" customClass="NSVisualEffectView">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="258"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="6g4-co-8BP"/>
+                                </constraints>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="gwU-fs-Dfl" secondAttribute="trailing" id="Bk8-UH-25j"/>
+                            <constraint firstItem="gwU-fs-Dfl" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="JGN-1s-IgH"/>
+                            <constraint firstAttribute="bottom" secondItem="MvV-i0-M9g" secondAttribute="bottom" id="LoZ-lQ-c6X"/>
+                            <constraint firstAttribute="bottom" secondItem="gwU-fs-Dfl" secondAttribute="bottom" id="Pf2-c3-wYe"/>
+                            <constraint firstItem="MvV-i0-M9g" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="WAD-4O-dGm"/>
+                            <constraint firstItem="gwU-fs-Dfl" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="eSc-0v-u8Q"/>
+                            <constraint firstItem="MvV-i0-M9g" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="irZ-4Z-pA1"/>
+                            <constraint firstAttribute="trailing" secondItem="MvV-i0-M9g" secondAttribute="trailing" id="nfR-v7-hHB"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="visualView" destination="gwU-fs-Dfl" id="PN2-WZ-cgb"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

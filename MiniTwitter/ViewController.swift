@@ -16,12 +16,16 @@ class Tweet: NSObject {
 }
 
 class ViewController: NSViewController {
-
+    @IBOutlet weak var visualView: NSVisualEffectView?
+    
     let useACAccount = true
     dynamic var tweets: [Tweet] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.visualView?.blendingMode = NSVisualEffectBlendingMode.behindWindow
+        self.visualView?.state = NSVisualEffectState.active
 
         let failureHandler: (Error) -> Void = { print($0.localizedDescription) }
         
