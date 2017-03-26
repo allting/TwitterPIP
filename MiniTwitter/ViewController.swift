@@ -12,7 +12,7 @@ import Swifter
 
 class Tweet: NSObject {
     var name: String!
-    var text: String!
+    var text: NSAttributedString!
 }
 
 class ViewController: NSViewController {
@@ -66,7 +66,7 @@ class ViewController: NSViewController {
                     guard let tweets = statuses.array else { return }
                     self.tweets = tweets.map {
                         let tweet = Tweet()
-                        tweet.text = $0["text"].string!
+                        tweet.text = self.attributedString($0["text"].string!)
                         tweet.name = $0["user"]["name"].string!
                         return tweet
                     }
@@ -81,7 +81,7 @@ class ViewController: NSViewController {
                     guard let tweets = statuses.array else { return }
                     self.tweets = tweets.map {
                         let tweet = Tweet()
-                        tweet.text = $0["text"].string!
+                        tweet.text = self.attributedString($0["text"].string!)
                         tweet.name = $0["user"]["name"].string!
                         return tweet
                     }
@@ -90,6 +90,35 @@ class ViewController: NSViewController {
         }
     }
 
+    fileprivate func attributedString(_ string: String) -> NSAttributedString{
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineBreakMode = .byWordWrapping
+        paragraphStyle.alignment = .left
+        paragraphStyle.lineHeightMultiple = 0
+        paragraphStyle.lineSpacing = 3
+        
+        let attributes: [String: Any] = [NSFontAttributeName: NSFont.systemFont(ofSize: 13.0),
+                                         NSForegroundColorAttributeName: NSColor.white,
+                                        NSParagraphStyleAttributeName: paragraphStyle]
+
+        let attributedString = NSMutableAttributedString.init(string: string, attributes: attributes)
+        
+        let detector = try! NSDataDetector.init(types: NSTextCheckingResult.CheckingType.link.rawValue)
+        let matches = detector.matches(in: string, options: [], range: NSRange(location:0, length:string.utf16.count))
+        
+        for match in matches {
+            let url = (string as NSString).substring(with: match.range)
+            let attributes : [String : Any] = [NSLinkAttributeName: url,
+                                               NSFontAttributeName: NSFont.systemFont(ofSize: 13.0),
+                                               NSForegroundColorAttributeName: NSColor.white,
+                                               NSParagraphStyleAttributeName: paragraphStyle]
+            
+            attributedString.setAttributes(attributes, range:match.range)
+        }
+        
+        return attributedString
+    }
+    
     override func viewWillLayout() {
         super.viewWillLayout()
         
@@ -119,10 +148,8 @@ extension ViewController : NSCollectionViewDataSource {
         guard let collectionViewItem = item as? CollectionViewItem else {return item}
 
         collectionViewItem.textField?.stringValue = tweets[indexPath.item].name
-        collectionViewItem.textTweet?.stringValue = tweets[indexPath.item].text
+        collectionViewItem.textTweet?.attributedStringValue = tweets[indexPath.item].text
         
-        collectionViewItem.textField?.sizeToFit()
-        collectionViewItem.textTweet?.sizeToFit()
         return item
     }
     
@@ -134,17 +161,8 @@ extension ViewController : NSCollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> NSSize {
         let string = tweets[indexPath.item].text
         
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineBreakMode = .byWordWrapping
-        paragraphStyle.alignment = .left
-        paragraphStyle.lineHeightMultiple = 0
-        paragraphStyle.lineSpacing = 3
-        
-        let attributes: NSDictionary = [NSFontAttributeName: NSFont.systemFont(ofSize: 13.0),
-                                        NSParagraphStyleAttributeName: paragraphStyle];
-        
         let textSize = NSMakeSize(260, 500)
-        let textStorage = NSTextStorage.init(string: string!, attributes: attributes as? [String : Any])
+        let textStorage = NSTextStorage.init(attributedString: string!)
         let layoutManager = NSLayoutManager.init()
         let textContainer = NSTextContainer.init(size: textSize)
         
