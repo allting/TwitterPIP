@@ -12,6 +12,8 @@
 		0F76E0E91E86418A009600BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F76E0E81E86418A009600BA /* Assets.xcassets */; };
 		0F76E0EC1E86418A009600BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F76E0EA1E86418A009600BA /* Main.storyboard */; };
 		0F76E11F1E864E45009600BA /* WAYTheDarkSide.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F76E11E1E864E45009600BA /* WAYTheDarkSide.m */; };
+		0F76E1231E86A36E009600BA /* CollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F76E1211E86A36E009600BA /* CollectionViewItem.swift */; };
+		0F76E1241E86A36E009600BA /* CollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F76E1221E86A36E009600BA /* CollectionViewItem.xib */; };
 		71148E6A6DD0495EC0275695 /* Pods_MiniTwitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 486591CF4F3C21763E7F00C0 /* Pods_MiniTwitter.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +27,8 @@
 		0F76E11D1E864E45009600BA /* WAYTheDarkSide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAYTheDarkSide.h; sourceTree = "<group>"; };
 		0F76E11E1E864E45009600BA /* WAYTheDarkSide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAYTheDarkSide.m; sourceTree = "<group>"; };
 		0F76E1201E864FE3009600BA /* MiniTwitter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MiniTwitter-Bridging-Header.h"; sourceTree = "<group>"; };
+		0F76E1211E86A36E009600BA /* CollectionViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewItem.swift; sourceTree = "<group>"; };
+		0F76E1221E86A36E009600BA /* CollectionViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewItem.xib; sourceTree = "<group>"; };
 		486591CF4F3C21763E7F00C0 /* Pods_MiniTwitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniTwitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F2548F3197BFFA20041964C /* Pods-MiniTwitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniTwitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiniTwitter/Pods-MiniTwitter.debug.xcconfig"; sourceTree = "<group>"; };
 		F2B9DD8F4C70ABAE62462BEF /* Pods-MiniTwitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniTwitter.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiniTwitter/Pods-MiniTwitter.release.xcconfig"; sourceTree = "<group>"; };
@@ -70,6 +74,8 @@
 				0F76E0E81E86418A009600BA /* Assets.xcassets */,
 				0F76E0EA1E86418A009600BA /* Main.storyboard */,
 				0F76E0ED1E86418A009600BA /* Info.plist */,
+				0F76E1211E86A36E009600BA /* CollectionViewItem.swift */,
+				0F76E1221E86A36E009600BA /* CollectionViewItem.xib */,
 			);
 			path = MiniTwitter;
 			sourceTree = "<group>";
@@ -174,6 +180,7 @@
 			files = (
 				0F76E0E91E86418A009600BA /* Assets.xcassets in Resources */,
 				0F76E0EC1E86418A009600BA /* Main.storyboard in Resources */,
+				0F76E1241E86A36E009600BA /* CollectionViewItem.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F76E0E71E86418A009600BA /* ViewController.swift in Sources */,
+				0F76E1231E86A36E009600BA /* CollectionViewItem.swift in Sources */,
 				0F76E11F1E864E45009600BA /* WAYTheDarkSide.m in Sources */,
 				0F76E0E51E86418A009600BA /* AppDelegate.swift in Sources */,
 			);

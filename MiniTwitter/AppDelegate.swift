@@ -1,4 +1,4 @@
-//
+ //
 //  AppDelegate.swift
 //  MiniTwitter
 //
@@ -20,8 +20,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.titlebarAppearsTransparent = true
         window.isMovableByWindowBackground = true
         
-        contentView = window.contentView as! NSVisualEffectView
-        
+//        contentView = window.contentView as! NSVisualEffectView
+//        
 //        self.contentView?.blendingMode = NSVisualEffectBlendingMode.behindWindow
 //        self.contentView?.state = NSVisualEffectState.active
   
@@ -31,7 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //        blurryView.state = NSVisualEffectState.active
 //        
 //        window.contentView?.addSubview(blurryView)
-        
+
         WAYTheDarkSide.welcomeApplication({
             self.window.appearance = NSAppearance.init(named: NSAppearanceNameVibrantDark)
             self.contentView?.blendingMode = NSVisualEffectBlendingMode.behindWindow
@@ -45,6 +45,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.contentView?.material = NSVisualEffectMaterial.light
             self.contentView?.state = NSVisualEffectState.active
         }, immediately: true)
+
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

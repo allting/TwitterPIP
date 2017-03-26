@@ -16,16 +16,30 @@ class Tweet: NSObject {
 }
 
 class ViewController: NSViewController {
-    @IBOutlet weak var visualView: NSVisualEffectView?
+    @IBOutlet weak var collectionView: NSCollectionView!
     
     let useACAccount = true
     dynamic var tweets: [Tweet] = []
     
+    fileprivate func configureCollectionView(){
+//        let flowLayout = NSCollectionViewFlowLayout()
+//        flowLayout.itemSize = NSSize(width: 300, height: 40)
+//        flowLayout.sectionInset = EdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+//        flowLayout.minimumInteritemSpacing = 20
+//        flowLayout.minimumLineSpacing = 10
+//        collectionView.collectionViewLayout = flowLayout
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
+
+        view.wantsLayer = true
+        collectionView.backgroundColors = [NSColor.clear]
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.visualView?.blendingMode = NSVisualEffectBlendingMode.behindWindow
-        self.visualView?.state = NSVisualEffectState.active
+        
+        configureCollectionView()
 
         let failureHandler: (Error) -> Void = { print($0.localizedDescription) }
         
@@ -49,13 +63,15 @@ class ViewController: NSViewController {
                 
                 swifter.getHomeTimeline(count: 20, success: { statuses in
                     print(statuses)
-//                    guard let tweets = statuses.array else { return }
-//                    self.tweets = tweets.map {
-//                        let tweet = Tweet()
-//                        tweet.text = $0["text"].string!
-//                        tweet.name = $0["user"]["name"].string!
-//                        return tweet
-//                    }
+                    guard let tweets = statuses.array else { return }
+                    self.tweets = tweets.map {
+                        let tweet = Tweet()
+                        tweet.text = $0["text"].string!
+                        tweet.name = $0["user"]["name"].string!
+                        return tweet
+                    }
+                    
+                    self.collectionView.reloadData()
                 }, failure: failureHandler)
             }
         } else {
@@ -74,6 +90,12 @@ class ViewController: NSViewController {
         }
     }
 
+    override func viewWillLayout() {
+        super.viewWillLayout()
+        
+        collectionView.collectionViewLayout?.invalidateLayout()
+    }
+    
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
@@ -83,3 +105,58 @@ class ViewController: NSViewController {
 
 }
 
+extension ViewController : NSCollectionViewDataSource {
+    func numberOfSections(in collectionView: NSCollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
+        return tweets.count
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
+        let item = collectionView.makeItem(withIdentifier: "CollectionViewItem", for: indexPath)
+        guard let collectionViewItem = item as? CollectionViewItem else {return item}
+
+        collectionViewItem.textField?.stringValue = tweets[indexPath.item].name
+        collectionViewItem.textTweet?.stringValue = tweets[indexPath.item].text
+        
+        collectionViewItem.textField?.sizeToFit()
+        collectionViewItem.textTweet?.sizeToFit()
+        return item
+    }
+    
+}
+
+extension ViewController : NSCollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: NSCollectionView,
+                        layout collectionViewLayout: NSCollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> NSSize {
+        let string = tweets[indexPath.item].text
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineBreakMode = .byWordWrapping
+        paragraphStyle.alignment = .left
+        paragraphStyle.lineHeightMultiple = 0
+        paragraphStyle.lineSpacing = 3
+        
+        let attributes: NSDictionary = [NSFontAttributeName: NSFont.systemFont(ofSize: 13.0),
+                                        NSParagraphStyleAttributeName: paragraphStyle];
+        
+        let textSize = NSMakeSize(260, 500)
+        let textStorage = NSTextStorage.init(string: string!, attributes: attributes as? [String : Any])
+        let layoutManager = NSLayoutManager.init()
+        let textContainer = NSTextContainer.init(size: textSize)
+        
+        layoutManager.addTextContainer(textContainer)
+        textStorage.addLayoutManager(layoutManager)
+        textContainer.lineFragmentPadding = 0
+        layoutManager.backgroundLayoutEnabled = true
+        
+        let glyphRange = layoutManager.glyphRange(for: textContainer)
+        var bounds = layoutManager.boundingRect(forGlyphRange: glyphRange, in: textContainer)
+        bounds.size.height += 40
+        bounds.size.width = collectionView.bounds.width
+        return  bounds.size
+    }
+}
