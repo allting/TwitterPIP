@@ -19,6 +19,8 @@ class ViewController: NSViewController {
     @IBOutlet weak var collectionView: NSCollectionView!
     
     let useACAccount = true
+    var swifter: Swifter!
+    
     dynamic var tweets: [Tweet] = []
     
     fileprivate func configureCollectionView(){
@@ -42,7 +44,7 @@ class ViewController: NSViewController {
         configureCollectionView()
 
         let failureHandler: (Error) -> Void = { print($0.localizedDescription) }
-        
+
         if useACAccount {
             let accountStore = ACAccountStore()
             let accountType = accountStore.accountType(withAccountTypeIdentifier: ACAccountTypeIdentifierTwitter)
@@ -59,9 +61,9 @@ class ViewController: NSViewController {
                 }
                 
                 let twitterAccount = twitterAccounts[0] as! ACAccount
-                let swifter = Swifter(account: twitterAccount)
+                self.swifter = Swifter(account: twitterAccount)
                 
-                swifter.getHomeTimeline(count: 20, success: { statuses in
+                self.swifter.getHomeTimeline(count: 20, success: { statuses in
                     print(statuses)
                     guard let tweets = statuses.array else { return }
                     self.tweets = tweets.map {
@@ -72,6 +74,9 @@ class ViewController: NSViewController {
                     }
                     
                     self.collectionView.reloadData()
+                    
+                    Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(self.update), userInfo: nil, repeats: true);
+                    
                 }, failure: failureHandler)
             }
         } else {
@@ -90,6 +95,24 @@ class ViewController: NSViewController {
         }
     }
 
+    func update(){
+        print("update")
+        let failureHandler: (Error) -> Void = { print($0.localizedDescription) }
+        self.swifter.getHomeTimeline(count: 20, success: { statuses in
+            print(statuses)
+            guard let tweets = statuses.array else { return }
+            self.tweets = tweets.map {
+                let tweet = Tweet()
+                tweet.text = self.attributedString($0["text"].string!)
+                tweet.name = $0["user"]["name"].string!
+                return tweet
+            }
+            
+            self.collectionView.reloadData()
+            
+        }, failure: failureHandler)
+    }
+    
     fileprivate func attributedString(_ string: String) -> NSAttributedString{
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineBreakMode = .byWordWrapping
