@@ -19,6 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.titleVisibility = .hidden
         window.titlebarAppearsTransparent = true
         window.isMovableByWindowBackground = true
+        window.level = Int(CGWindowLevelForKey(.floatingWindow))
         
 //        contentView = window.contentView as! NSVisualEffectView
 //        
