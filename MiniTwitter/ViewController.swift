@@ -13,6 +13,7 @@ import Swifter
 class Tweet: NSObject {
     var name: String!
     var text: NSAttributedString!
+    var since: String!
 }
 
 class ViewController: NSViewController {
@@ -70,6 +71,7 @@ class ViewController: NSViewController {
                         let tweet = Tweet()
                         tweet.text = self.attributedString($0["text"].string!)
                         tweet.name = $0["user"]["name"].string!
+                        tweet.since = $0["id_str"].string!
                         return tweet
                     }
                     
@@ -96,18 +98,27 @@ class ViewController: NSViewController {
     }
 
     func update(){
-        print("update")
+        let since = self.tweets.first?.since
+        print("update - \(since)")
         let failureHandler: (Error) -> Void = { print($0.localizedDescription) }
-        self.swifter.getHomeTimeline(count: 20, success: { statuses in
-            print(statuses)
+        
+        self.swifter.getHomeTimeline(count: 20, sinceID: since, success: { statuses in
+//            print(statuses)
             guard let tweets = statuses.array else { return }
-            self.tweets = tweets.map {
+            if tweets.count == 0 {
+                return
+            }
+            
+            let temp: [Tweet] = tweets.map {
                 let tweet = Tweet()
                 tweet.text = self.attributedString($0["text"].string!)
                 tweet.name = $0["user"]["name"].string!
+                tweet.since = $0["id_str"].string!
                 return tweet
             }
             
+            self.tweets = temp + self.tweets
+
             self.collectionView.reloadData()
             
         }, failure: failureHandler)
