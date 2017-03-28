@@ -21,9 +21,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.isMovableByWindowBackground = true
         window.level = Int(CGWindowLevelForKey(.floatingWindow))
         
-        window.standardWindowButton(NSWindowButton.closeButton)?.isHidden = true
-        window.standardWindowButton(NSWindowButton.miniaturizeButton)?.isHidden = true
-        window.standardWindowButton(NSWindowButton.zoomButton)?.isHidden = true
 //        contentView = window.contentView as! NSVisualEffectView
 //        
 //        self.contentView?.blendingMode = NSVisualEffectBlendingMode.behindWindow
@@ -55,7 +52,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
-
-
 }
 

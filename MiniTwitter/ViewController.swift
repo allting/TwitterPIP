@@ -42,6 +42,12 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let trackingArea = NSTrackingArea.init(rect: self.view.frame,
+                                               options: [.mouseEnteredAndExited, .activeAlways],
+                                               owner: self,
+                                               userInfo: nil)
+        self.view.addTrackingArea(trackingArea)
+
         configureCollectionView()
 
         let failureHandler: (Error) -> Void = { print($0.localizedDescription) }
@@ -159,6 +165,22 @@ class ViewController: NSViewController {
         super.viewWillLayout()
         
         collectionView.collectionViewLayout?.invalidateLayout()
+    }
+
+    override func mouseEntered(with event: NSEvent) {
+        print("mouseEntered - \(self.view.frame), \(self.collectionView.frame)")
+        showSystemButtons(show: true)
+    }
+    
+    override func mouseExited(with event: NSEvent) {
+        print("mouseExited")
+        showSystemButtons(show: false)
+    }
+    
+    fileprivate func showSystemButtons(show: Bool) {
+        self.view.window!.standardWindowButton(NSWindowButton.closeButton)?.isHidden = !show
+        self.view.window!.standardWindowButton(NSWindowButton.miniaturizeButton)?.isHidden = !show
+        self.view.window!.standardWindowButton(NSWindowButton.zoomButton)?.isHidden = !show
     }
     
     override var representedObject: Any? {
