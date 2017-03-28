@@ -132,7 +132,7 @@ class ViewController: NSViewController {
         paragraphStyle.lineSpacing = 3
         
         let attributes: [String: Any] = [NSFontAttributeName: NSFont.systemFont(ofSize: 13.0),
-                                         NSForegroundColorAttributeName: NSColor.white,
+                                         NSForegroundColorAttributeName: NSColor.darkGray,
                                         NSParagraphStyleAttributeName: paragraphStyle]
 
         let attributedString = NSMutableAttributedString.init(string: string, attributes: attributes)
@@ -142,10 +142,12 @@ class ViewController: NSViewController {
         
         for match in matches {
             let url = (string as NSString).substring(with: match.range)
-            let attributes : [String : Any] = [NSLinkAttributeName: url,
+            let attributes : [String : Any] = ["CUSTOM": url,
                                                NSFontAttributeName: NSFont.systemFont(ofSize: 13.0),
-                                               NSForegroundColorAttributeName: NSColor.white,
-                                               NSParagraphStyleAttributeName: paragraphStyle]
+                                               NSForegroundColorAttributeName: NSColor.darkGray,
+                                               NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue,
+                                               NSParagraphStyleAttributeName: paragraphStyle,
+                                               NSCursorAttributeName: NSCursor.pointingHand()]
             
             attributedString.setAttributes(attributes, range:match.range)
         }
