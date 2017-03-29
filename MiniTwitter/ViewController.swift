@@ -42,8 +42,8 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let trackingArea = NSTrackingArea.init(rect: self.view.frame,
-                                               options: [.mouseEnteredAndExited, .activeAlways],
+        let trackingArea = NSTrackingArea.init(rect: self.view.bounds,
+                                               options: [.mouseEnteredAndExited, .activeAlways, .inVisibleRect],
                                                owner: self,
                                                userInfo: nil)
         self.view.addTrackingArea(trackingArea)
