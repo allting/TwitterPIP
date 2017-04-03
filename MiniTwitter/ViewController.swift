@@ -9,11 +9,13 @@
 import Cocoa
 import Accounts
 import Swifter
+import FormatterKit
 
 class Tweet: NSObject {
     var name: String!
     var text: NSAttributedString!
     var since: String!
+    var createdAt: String!
 }
 
 class ViewController: NSViewController {
@@ -24,6 +26,21 @@ class ViewController: NSViewController {
     
     dynamic var tweets: [Tweet] = []
     
+    static let formatter: TTTTimeIntervalFormatter = {
+        let formatter = TTTTimeIntervalFormatter()
+        formatter.locale = NSLocale.current
+        formatter.usesAbbreviatedCalendarUnits = true
+        return formatter
+    }()
+    
+    static let dateConvertFormatter : DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale!
+        formatter.dateFormat = "EEE MMM dd HH:mm:ss Z yyyy"
+        return formatter
+    }()
+    
+
     fileprivate func configureCollectionView(){
 //        let flowLayout = NSCollectionViewFlowLayout()
 //        flowLayout.itemSize = NSSize(width: 300, height: 40)
@@ -78,6 +95,7 @@ class ViewController: NSViewController {
                         tweet.text = self.attributedString($0["text"].string!)
                         tweet.name = $0["user"]["name"].string!
                         tweet.since = $0["id_str"].string!
+                        tweet.createdAt = $0["created_at"].string!
                         return tweet
                     }
                     
@@ -96,6 +114,7 @@ class ViewController: NSViewController {
                         let tweet = Tweet()
                         tweet.text = self.attributedString($0["text"].string!)
                         tweet.name = $0["user"]["name"].string!
+                        tweet.createdAt = $0["created_at"].string!
                         return tweet
                     }
                 }, failure: failureHandler)
@@ -105,7 +124,7 @@ class ViewController: NSViewController {
 
     func update(){
         let since = self.tweets.first?.since
-        print("update - \(since)")
+        print("update - \(String(describing: since))")
         let failureHandler: (Error) -> Void = { print($0.localizedDescription) }
         
         self.swifter.getHomeTimeline(count: 20, sinceID: since, success: { statuses in
@@ -120,6 +139,7 @@ class ViewController: NSViewController {
                 tweet.text = self.attributedString($0["text"].string!)
                 tweet.name = $0["user"]["name"].string!
                 tweet.since = $0["id_str"].string!
+                tweet.createdAt = $0["created_at"].string!
                 return tweet
             }
             
@@ -206,8 +226,14 @@ extension ViewController : NSCollectionViewDataSource {
         guard let collectionViewItem = item as? CollectionViewItem else {return item}
 
         collectionViewItem.textField?.stringValue = tweets[indexPath.item].name
+        collectionViewItem.textField?.sizeToFit()
         collectionViewItem.textTweet?.attributedStringValue = tweets[indexPath.item].text
         
+        let createdDate = ViewController.dateConvertFormatter.date(from: tweets[indexPath.item].createdAt)
+        let timeInterval = createdDate?.timeIntervalSince(Date())
+
+        collectionViewItem.createdAt?.stringValue = ViewController.formatter.string(forTimeInterval: timeInterval!)
+        collectionViewItem.createdAt?.sizeToFit()
         return item
     }
     

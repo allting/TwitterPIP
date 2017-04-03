@@ -7,4 +7,5 @@ target 'MiniTwitter' do
 
   # Pods for MiniTwitter
   pod 'Swifter', :git => 'https://github.com/mattdonnelly/Swifter.git'
+  pod 'FormatterKit'
 end

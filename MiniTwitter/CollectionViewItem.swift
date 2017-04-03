@@ -10,7 +10,8 @@ import Cocoa
 
 class CollectionViewItem: NSCollectionViewItem {
     @IBOutlet var textTweet: NSTextField?
-    
+    @IBOutlet var createdAt: NSTextField?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.wantsLayer = true
