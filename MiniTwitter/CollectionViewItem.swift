@@ -8,19 +8,39 @@
 
 import Cocoa
 
-protocol  CollectionViewItemDelegate: class{
-    func selectFavoriteButton(tweet: Tweet)
-    func selectReplyButton(tweet: Tweet)
-    func selectRetweetButton(tweet: Tweet)
-    func selectShareButton(tweet: Tweet)
-}
-
 class CollectionViewItem: NSCollectionViewItem {
-    var tweet: Tweet?
+    var tweet: Tweet? {
+        set {
+            self.textTweet?.attributedStringValue = newValue!.text
+            self.textField?.stringValue = newValue!.name
+        }
+        get {
+            return self.tweet
+        }
+    }
+    
+    fileprivate var _indexPath : IndexPath?
+    
+    var indexPath: IndexPath? {
+        set {
+            self.favoriteButton?.tag = (newValue?.item)!
+            self.replyButton?.tag = (newValue?.item)!
+            self.retweetButton?.tag = (newValue?.item)!
+            self.shareButton?.tag = (newValue?.item)!
+            _indexPath = newValue
+        }
+        get {
+            return _indexPath
+        }
+    }
+    
     @IBOutlet var textTweet: NSTextField?
     @IBOutlet var createdAt: NSTextField?
 
-    weak var delegate: CollectionViewItemDelegate?
+    @IBOutlet var favoriteButton: NSButton?
+    @IBOutlet var replyButton: NSButton?
+    @IBOutlet var retweetButton: NSButton?
+    @IBOutlet var shareButton: NSButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,23 +49,6 @@ class CollectionViewItem: NSCollectionViewItem {
 
         textTweet?.allowsEditingTextAttributes = true
         textTweet?.isSelectable = true
-    }
-    
-    @IBAction func selectedFavoriteButton(_ sendedr: Any){
-        print("selected fav")
-        self.delegate?.selectFavoriteButton(tweet: self.tweet!)
-    }
-    @IBAction func selectedReplyButton(_ sendedr: Any){
-        print("selected reply")
-        self.delegate?.selectReplyButton(tweet: self.tweet!)
-    }
-    @IBAction func selectedRetweetButton(_ sendedr: Any){
-        print("selected retweet")
-        self.delegate?.selectRetweetButton(tweet: self.tweet!)
-    }
-    @IBAction func selectedShareButton(_ sendedr: Any){
-        print("selected share")
-        self.delegate?.selectShareButton(tweet: self.tweet!)
     }
 }
 

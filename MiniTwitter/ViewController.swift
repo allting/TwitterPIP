@@ -214,6 +214,18 @@ class ViewController: NSViewController {
     }
 
 
+    @IBAction func selectFavoriteButton(_ sender: AnyObject) {
+        print("selected favorite button : \(sender.tag)")
+    }
+    @IBAction func selectReplyButton(_ sender: AnyObject) {
+        print("selected reply button : \(sender.tag)")
+    }
+    @IBAction func selectRetweetButton(_ sender: AnyObject) {
+        print("selected retweet button : \(sender.tag)")
+    }
+    @IBAction func selectShareButton(_ sender: AnyObject) {
+        print("selected share button : \(sender.tag)")
+    }
 }
 
 extension ViewController : NSCollectionViewDataSource {
@@ -232,11 +244,7 @@ extension ViewController : NSCollectionViewDataSource {
         let tweet = tweets[indexPath.item];
         
         collectionViewItem.tweet = tweet
-        collectionViewItem.textField?.stringValue = tweet.name
-        collectionViewItem.textTweet?.attributedStringValue = tweet.text
-        
-        collectionViewItem.delegate = self
-        print("New item:\(collectionViewItem), delegate:\(String(describing: collectionViewItem.delegate))")
+        collectionViewItem.indexPath = indexPath
         
 //        let createdDate = ViewController.dateConvertFormatter.date(from: tweets[indexPath.item].createdAt)
 //        let timeInterval = createdDate?.timeIntervalSince(Date())
@@ -269,20 +277,5 @@ extension ViewController : NSCollectionViewDelegateFlowLayout {
         bounds.size.height += 28
         bounds.size.width = collectionView.bounds.width
         return  bounds.size
-    }
-}
-
-extension ViewController : CollectionViewItemDelegate {
-    func selectFavoriteButton(tweet: Tweet) {
-        print("sectedFavoriteButton")
-    }
-    func selectReplyButton(tweet: Tweet) {
-        print("sectedReplyButton")
-    }
-    func selectRetweetButton(tweet: Tweet) {
-        print("sectedRetweetButton")
-    }
-    func selectShareButton(tweet: Tweet) {
-        print("sectedShareButton")
     }
 }
