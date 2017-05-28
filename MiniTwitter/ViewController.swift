@@ -16,6 +16,9 @@ class Tweet: NSObject {
     var text: NSAttributedString!
     var since: String!
     var createdAt: String!
+    
+    var favorited: Bool!
+    var retweeted: Bool!
 }
 
 class ViewController: NSViewController {
@@ -95,12 +98,13 @@ class ViewController: NSViewController {
                         tweet.text = self.attributedString($0["text"].string!)
                         tweet.name = $0["user"]["name"].string!
                         tweet.since = $0["id_str"].string!
+                        tweet.favorited = $0["favorited"].bool
+                        tweet.retweeted = $0["retweeted"].bool
 //                        tweet.createdAt = $0["created_at"].string!
                         return tweet
                     }
                     
                     self.collectionView.reloadData()
-                    
                     Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(self.update), userInfo: nil, repeats: true);
                     
                 }, failure: failureHandler)
@@ -225,9 +229,14 @@ extension ViewController : NSCollectionViewDataSource {
         let item = collectionView.makeItem(withIdentifier: "CollectionViewItem", for: indexPath)
         guard let collectionViewItem = item as? CollectionViewItem else {return item}
 
-        collectionViewItem.textField?.stringValue = tweets[indexPath.item].name
-//        collectionViewItem.textField?.sizeToFit()
-        collectionViewItem.textTweet?.attributedStringValue = tweets[indexPath.item].text
+        let tweet = tweets[indexPath.item];
+        
+        collectionViewItem.tweet = tweet
+        collectionViewItem.textField?.stringValue = tweet.name
+        collectionViewItem.textTweet?.attributedStringValue = tweet.text
+        
+        collectionViewItem.delegate = self
+        print("New item:\(collectionViewItem), delegate:\(String(describing: collectionViewItem.delegate))")
         
 //        let createdDate = ViewController.dateConvertFormatter.date(from: tweets[indexPath.item].createdAt)
 //        let timeInterval = createdDate?.timeIntervalSince(Date())
@@ -260,5 +269,20 @@ extension ViewController : NSCollectionViewDelegateFlowLayout {
         bounds.size.height += 28
         bounds.size.width = collectionView.bounds.width
         return  bounds.size
+    }
+}
+
+extension ViewController : CollectionViewItemDelegate {
+    func selectFavoriteButton(tweet: Tweet) {
+        print("sectedFavoriteButton")
+    }
+    func selectReplyButton(tweet: Tweet) {
+        print("sectedReplyButton")
+    }
+    func selectRetweetButton(tweet: Tweet) {
+        print("sectedRetweetButton")
+    }
+    func selectShareButton(tweet: Tweet) {
+        print("sectedShareButton")
     }
 }

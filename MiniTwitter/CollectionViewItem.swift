@@ -8,10 +8,20 @@
 
 import Cocoa
 
+protocol  CollectionViewItemDelegate: class{
+    func selectFavoriteButton(tweet: Tweet)
+    func selectReplyButton(tweet: Tweet)
+    func selectRetweetButton(tweet: Tweet)
+    func selectShareButton(tweet: Tweet)
+}
+
 class CollectionViewItem: NSCollectionViewItem {
+    var tweet: Tweet?
     @IBOutlet var textTweet: NSTextField?
     @IBOutlet var createdAt: NSTextField?
 
+    weak var delegate: CollectionViewItemDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.wantsLayer = true
@@ -19,6 +29,23 @@ class CollectionViewItem: NSCollectionViewItem {
 
         textTweet?.allowsEditingTextAttributes = true
         textTweet?.isSelectable = true
+    }
+    
+    @IBAction func selectedFavoriteButton(_ sendedr: Any){
+        print("selected fav")
+        self.delegate?.selectFavoriteButton(tweet: self.tweet!)
+    }
+    @IBAction func selectedReplyButton(_ sendedr: Any){
+        print("selected reply")
+        self.delegate?.selectReplyButton(tweet: self.tweet!)
+    }
+    @IBAction func selectedRetweetButton(_ sendedr: Any){
+        print("selected retweet")
+        self.delegate?.selectRetweetButton(tweet: self.tweet!)
+    }
+    @IBAction func selectedShareButton(_ sendedr: Any){
+        print("selected share")
+        self.delegate?.selectShareButton(tweet: self.tweet!)
     }
 }
 

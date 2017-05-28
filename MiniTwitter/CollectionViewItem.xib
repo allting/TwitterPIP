@@ -41,6 +41,9 @@
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="selectedFavoriteButton:" target="-2" id="n0C-lL-6Dl"/>
+                                            </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yzd-QR-9uL">
                                             <rect key="frame" x="30" y="1" width="30" height="12"/>
@@ -51,6 +54,9 @@
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="selectedReplyButton:" target="-2" id="COn-15-KZL"/>
+                                            </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="cB4-L6-Pjb">
                                             <rect key="frame" x="60" y="2" width="30" height="10"/>
@@ -61,6 +67,9 @@
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="selectedRetweetButton:" target="-2" id="JfW-7m-C86"/>
+                                            </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jrO-06-vJW">
                                             <rect key="frame" x="90" y="0.0" width="30" height="14"/>
@@ -68,6 +77,9 @@
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="selectedShareButton:" target="-2" id="tUE-af-Q2Y"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
