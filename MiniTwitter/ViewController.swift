@@ -95,7 +95,7 @@ class ViewController: NSViewController {
                         tweet.text = self.attributedString($0["text"].string!)
                         tweet.name = $0["user"]["name"].string!
                         tweet.since = $0["id_str"].string!
-                        tweet.createdAt = $0["created_at"].string!
+//                        tweet.createdAt = $0["created_at"].string!
                         return tweet
                     }
                     
@@ -114,7 +114,7 @@ class ViewController: NSViewController {
                         let tweet = Tweet()
                         tweet.text = self.attributedString($0["text"].string!)
                         tweet.name = $0["user"]["name"].string!
-                        tweet.createdAt = $0["created_at"].string!
+//                        tweet.createdAt = $0["created_at"].string!
                         return tweet
                     }
                 }, failure: failureHandler)
@@ -139,7 +139,7 @@ class ViewController: NSViewController {
                 tweet.text = self.attributedString($0["text"].string!)
                 tweet.name = $0["user"]["name"].string!
                 tweet.since = $0["id_str"].string!
-                tweet.createdAt = $0["created_at"].string!
+//                tweet.createdAt = $0["created_at"].string!
                 return tweet
             }
             
@@ -226,14 +226,14 @@ extension ViewController : NSCollectionViewDataSource {
         guard let collectionViewItem = item as? CollectionViewItem else {return item}
 
         collectionViewItem.textField?.stringValue = tweets[indexPath.item].name
-        collectionViewItem.textField?.sizeToFit()
+//        collectionViewItem.textField?.sizeToFit()
         collectionViewItem.textTweet?.attributedStringValue = tweets[indexPath.item].text
         
-        let createdDate = ViewController.dateConvertFormatter.date(from: tweets[indexPath.item].createdAt)
-        let timeInterval = createdDate?.timeIntervalSince(Date())
-
-        collectionViewItem.createdAt?.stringValue = ViewController.formatter.string(forTimeInterval: timeInterval!)
-        collectionViewItem.createdAt?.sizeToFit()
+//        let createdDate = ViewController.dateConvertFormatter.date(from: tweets[indexPath.item].createdAt)
+//        let timeInterval = createdDate?.timeIntervalSince(Date())
+//
+//        collectionViewItem.createdAt?.stringValue = ViewController.formatter.string(forTimeInterval: timeInterval!)
+//        collectionViewItem.createdAt?.sizeToFit()
         return item
     }
     
@@ -245,7 +245,7 @@ extension ViewController : NSCollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> NSSize {
         let string = tweets[indexPath.item].text
         
-        let textSize = NSMakeSize(260, 500)
+        let textSize = NSMakeSize(collectionView.bounds.width, 500)
         let textStorage = NSTextStorage.init(attributedString: string!)
         let layoutManager = NSLayoutManager.init()
         let textContainer = NSTextContainer.init(size: textSize)
@@ -257,7 +257,7 @@ extension ViewController : NSCollectionViewDelegateFlowLayout {
         
         let glyphRange = layoutManager.glyphRange(for: textContainer)
         var bounds = layoutManager.boundingRect(forGlyphRange: glyphRange, in: textContainer)
-        bounds.size.height += 40
+        bounds.size.height += 28
         bounds.size.width = collectionView.bounds.width
         return  bounds.size
     }
