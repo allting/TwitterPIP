@@ -10,6 +10,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="CollectionViewItem" customModule="MiniTwitter" customModuleProvider="target">
             <connections>
                 <outlet property="favoriteButton" destination="vZD-Nr-6WF" id="zqj-zq-3Bt"/>
+                <outlet property="menuStackView" destination="xVC-fP-cpW" id="69l-1R-8eR"/>
                 <outlet property="replyButton" destination="yzd-QR-9uL" id="Z7h-DR-dnh"/>
                 <outlet property="retweetButton" destination="cB4-L6-Pjb" id="eqZ-G5-c6B"/>
                 <outlet property="shareButton" destination="jrO-06-vJW" id="RT0-W2-YR3"/>
@@ -35,6 +36,9 @@
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
+                                    <connections>
+                                        <binding destination="8Og-MO-HCm" name="value" keyPath="self.representedObject.name" id="KHb-2g-EF1"/>
+                                    </connections>
                                 </textField>
                                 <stackView distribution="fillEqually" orientation="horizontal" alignment="bottom" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xVC-fP-cpW">
                                     <rect key="frame" x="240" y="4" width="120" height="14"/>
@@ -46,7 +50,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="selectFavoriteButton:" target="-1" id="W1i-rg-ovu"/>
+                                                <action selector="selectedFavorite:" target="8Og-MO-HCm" id="9AH-tZ-X1d"/>
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yzd-QR-9uL">
@@ -59,7 +63,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="selectReplyButton:" target="-1" id="O5z-Pn-OP0"/>
+                                                <action selector="selectedReply:" target="8Og-MO-HCm" id="30a-2X-ldc"/>
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="cB4-L6-Pjb">
@@ -72,7 +76,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="selectRetweetButton:" target="-1" id="ASc-fd-rdv"/>
+                                                <action selector="selectedRetweet:" target="8Og-MO-HCm" id="P28-I3-GWR"/>
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jrO-06-vJW">
@@ -82,7 +86,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="selectShareButton:" target="-1" id="oqp-5O-HYW"/>
+                                                <action selector="selectedShare:" target="8Og-MO-HCm" id="GYd-5h-REd"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -122,10 +126,13 @@
                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cFE-O3-ik6" customClass="MyTextField" customModule="MiniTwitter" customModuleProvider="target">
                             <rect key="frame" x="-2" y="0.0" width="154" height="32"/>
                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="여기에 보여야 함. Tweet Tesxt aklsdjf http://ex.com" id="Sou-QI-VeX">
-                                <font key="font" metaFont="controlContent"/>
+                                <font key="font" metaFont="cellTitle"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
+                            <connections>
+                                <binding destination="8Og-MO-HCm" name="value" keyPath="self.representedObject.text" id="4rl-0f-nv2"/>
+                            </connections>
                         </textField>
                     </subviews>
                     <constraints>
@@ -150,7 +157,7 @@
             </constraints>
             <point key="canvasLocation" x="-50" y="68"/>
         </customView>
-        <collectionViewItem id="8Og-MO-HCm" customClass="CollectionViewItem" customModule="MiniTwitter" customModuleProvider="target">
+        <collectionViewItem nibName="CollectionViewItem" id="8Og-MO-HCm" customClass="CollectionViewItem" customModule="MiniTwitter" customModuleProvider="target">
             <connections>
                 <outlet property="textField" destination="wGC-s6-Ed8" id="fnh-Uu-vdO"/>
                 <outlet property="textTweet" destination="cFE-O3-ik6" id="0F6-1A-Znl"/>

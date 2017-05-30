@@ -104,6 +104,8 @@ class ViewController: NSViewController {
                         return tweet
                     }
                     
+                    NotificationCenter.default.addObserver(self, selector: #selector(self.tweetActions), name: Notification.Name("TweetAction"), object: nil)
+                    
                     self.collectionView.reloadData()
                     Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(self.update), userInfo: nil, repeats: true);
                     
@@ -126,6 +128,24 @@ class ViewController: NSViewController {
         }
     }
 
+    func tweetActions(_ notification: Notification) {
+        let userInfo = notification.userInfo as! Dictionary<String, Any>
+        let tweet = userInfo["Tweet"]
+        let action = userInfo["Action"] as! String
+        
+        switch action {
+            case "Favorite":
+            print("Favorite")
+            case "Reply":
+            print("Reply")
+            case "Retweet":
+            print("Retweet")
+            case "Share":
+            print("Share")
+        default:
+            print("Unknown tweet action")
+        }
+    }
     func update(){
         let since = self.tweets.first?.since
         print("update - \(String(describing: since))")
@@ -193,11 +213,43 @@ class ViewController: NSViewController {
 
     override func mouseEntered(with event: NSEvent) {
         print("mouseEntered - \(self.view.frame), \(self.collectionView.frame)")
+        var mouseOverItemIndex = NSNotFound
+        let point = self.collectionView.convert(event.locationInWindow, from: nil)
+        for index in 0 ..< self.tweets.count {
+            let itemFrame = self.collectionView .frameForItem(at: index)
+            if(NSMouseInRect(point, itemFrame, self.view.isFlipped)){
+                mouseOverItemIndex = index
+                break;
+            }
+        }
+        
+        let item = self.collectionView.item(at: mouseOverItemIndex)
+        guard let collectionViewItem = item as? CollectionViewItem else {return}
+        
+        collectionViewItem.showMenu()
         showSystemButtons(show: true)
     }
     
     override func mouseExited(with event: NSEvent) {
         print("mouseExited")
+        
+        var mouseOverItemIndex = NSNotFound
+        let point = self.collectionView.convert(event.locationInWindow, from: nil)
+        for index in 0 ..< self.tweets.count {
+            let itemFrame = self.collectionView .frameForItem(at: index)
+            if(NSMouseInRect(point, itemFrame, self.view.isFlipped)){
+                mouseOverItemIndex = index
+                break;
+            }
+        }
+        
+        for index in 0 ..< self.tweets.count {
+            let item = self.collectionView.item(at: index)
+            guard let collectionViewItem = item as? CollectionViewItem else {return}
+            
+            collectionViewItem.hideMenu()
+        }
+
         showSystemButtons(show: false)
     }
     
@@ -239,12 +291,12 @@ extension ViewController : NSCollectionViewDataSource {
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = collectionView.makeItem(withIdentifier: "CollectionViewItem", for: indexPath)
-        guard let collectionViewItem = item as? CollectionViewItem else {return item}
+//        guard let collectionViewItem = item as? CollectionViewItem else {return item}
 
         let tweet = tweets[indexPath.item];
-        
-        collectionViewItem.tweet = tweet
-        collectionViewItem.indexPath = indexPath
+        item.representedObject = tweet
+
+//        collectionViewItem.representedObject = tweet
         
 //        let createdDate = ViewController.dateConvertFormatter.date(from: tweets[indexPath.item].createdAt)
 //        let timeInterval = createdDate?.timeIntervalSince(Date())

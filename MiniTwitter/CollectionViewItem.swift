@@ -9,34 +9,24 @@
 import Cocoa
 
 class CollectionViewItem: NSCollectionViewItem {
+    fileprivate var _tweet: Tweet?
     var tweet: Tweet? {
         set {
             self.textTweet?.attributedStringValue = newValue!.text
             self.textField?.stringValue = newValue!.name
+            _tweet = newValue
         }
         get {
-            return self.tweet
+            return _tweet
         }
     }
     
     fileprivate var _indexPath : IndexPath?
     
-    var indexPath: IndexPath? {
-        set {
-            self.favoriteButton?.tag = (newValue?.item)!
-            self.replyButton?.tag = (newValue?.item)!
-            self.retweetButton?.tag = (newValue?.item)!
-            self.shareButton?.tag = (newValue?.item)!
-            _indexPath = newValue
-        }
-        get {
-            return _indexPath
-        }
-    }
-    
     @IBOutlet var textTweet: NSTextField?
     @IBOutlet var createdAt: NSTextField?
 
+    @IBOutlet var menuStackView: NSStackView?
     @IBOutlet var favoriteButton: NSButton?
     @IBOutlet var replyButton: NSButton?
     @IBOutlet var retweetButton: NSButton?
@@ -49,6 +39,37 @@ class CollectionViewItem: NSCollectionViewItem {
 
         textTweet?.allowsEditingTextAttributes = true
         textTweet?.isSelectable = true
+    }
+    
+    
+    func showMenu() {
+//        self.menuStackView?.setVisibilityPriority(NSStackViewVisibilityPriorityMustHold, for: self.view)
+//        self.menuStackView?.isHidden = false
+    }
+    
+    func hideMenu() {
+//        self.menuStackView?.setVisibilityPriority(NSStackViewVisibilityPriorityNotVisible, for: self.view)
+//        self.menuStackView?.hidden = true
+    }
+    
+    @IBAction func selectedFavorite(_ sender: AnyObject) {
+        let userInfo: [String: Any] = ["Tweet": tweet as AnyObject, "Action": "Favorite"]
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TweetAction"), object: self, userInfo: userInfo)
+    }
+
+    @IBAction func selectedReply(_ sender: AnyObject) {
+        let userInfo: [String: Any] = ["Tweet": tweet as AnyObject, "Action": "Reply"]
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TweetAction"), object: self, userInfo: userInfo)
+    }
+
+    @IBAction func selectedRetweet(_ sender: AnyObject) {
+        let userInfo: [String: Any] = ["Tweet": tweet as AnyObject, "Action": "Retweet"]
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TweetAction"), object: self, userInfo: userInfo)
+    }
+
+    @IBAction func selectedShare(_ sender: AnyObject) {
+        let userInfo: [String: Any] = ["Tweet": tweet as AnyObject, "Action": "Share"]
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TweetAction"), object: self, userInfo: userInfo)
     }
 }
 
