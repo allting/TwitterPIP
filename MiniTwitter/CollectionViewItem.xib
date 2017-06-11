@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -10,7 +10,6 @@
         <customObject id="-2" userLabel="File's Owner" customClass="CollectionViewItem" customModule="MiniTwitter" customModuleProvider="target">
             <connections>
                 <outlet property="favoriteButton" destination="vZD-Nr-6WF" id="zqj-zq-3Bt"/>
-                <outlet property="menuStackView" destination="xVC-fP-cpW" id="69l-1R-8eR"/>
                 <outlet property="replyButton" destination="yzd-QR-9uL" id="Z7h-DR-dnh"/>
                 <outlet property="retweetButton" destination="cB4-L6-Pjb" id="eqZ-G5-c6B"/>
                 <outlet property="shareButton" destination="jrO-06-vJW" id="RT0-W2-YR3"/>
@@ -159,6 +158,7 @@
         </customView>
         <collectionViewItem nibName="CollectionViewItem" id="8Og-MO-HCm" customClass="CollectionViewItem" customModule="MiniTwitter" customModuleProvider="target">
             <connections>
+                <outlet property="menuStackView" destination="xVC-fP-cpW" id="TB1-YS-Udg"/>
                 <outlet property="textField" destination="wGC-s6-Ed8" id="fnh-Uu-vdO"/>
                 <outlet property="textTweet" destination="cFE-O3-ik6" id="0F6-1A-Znl"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="yxf-Ak-Jl0"/>

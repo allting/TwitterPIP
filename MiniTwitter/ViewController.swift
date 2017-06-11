@@ -29,6 +29,8 @@ class ViewController: NSViewController {
     
     dynamic var tweets: [Tweet] = []
     
+    private var trackingArea: NSTrackingArea?
+    
     static let formatter: TTTTimeIntervalFormatter = {
         let formatter = TTTTimeIntervalFormatter()
         formatter.locale = NSLocale.current
@@ -59,16 +61,23 @@ class ViewController: NSViewController {
         collectionView.backgroundColors = [NSColor.clear]
     }
     
+    fileprivate func adjustTrackingArea() {
+        if (self.trackingArea != nil) {
+            self.view.removeTrackingArea(self.trackingArea!)
+        }
+        
+        self.trackingArea = NSTrackingArea.init(rect: self.view.bounds,
+                                           options: [.mouseEnteredAndExited, .mouseMoved, .activeAlways, .inVisibleRect],
+                                           owner: self,
+                                           userInfo: nil)
+        self.view.addTrackingArea(self.trackingArea!)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let trackingArea = NSTrackingArea.init(rect: self.view.bounds,
-                                               options: [.mouseEnteredAndExited, .activeAlways, .inVisibleRect],
-                                               owner: self,
-                                               userInfo: nil)
-        self.view.addTrackingArea(trackingArea)
-
         configureCollectionView()
+        adjustTrackingArea()
 
         let failureHandler: (Error) -> Void = { print($0.localizedDescription) }
 
@@ -146,6 +155,7 @@ class ViewController: NSViewController {
             print("Unknown tweet action")
         }
     }
+
     func update(){
         let since = self.tweets.first?.since
         print("update - \(String(describing: since))")
@@ -229,6 +239,33 @@ class ViewController: NSViewController {
         collectionViewItem.showMenu()
         showSystemButtons(show: true)
     }
+
+    override func mouseMoved(with event: NSEvent) {
+        var mouseOverItemIndex = NSNotFound
+        let point = self.collectionView.convert(event.locationInWindow, from: nil)
+        for index in 0 ..< self.tweets.count {
+            let itemFrame = self.collectionView .frameForItem(at: index)
+            if(NSMouseInRect(point, itemFrame, self.view.isFlipped)){
+                mouseOverItemIndex = index
+                break;
+            }
+        }
+
+        for index in 0 ..< self.tweets.count {
+            let item = self.collectionView.item(at: index)
+            if item == nil {
+                continue
+            }
+            
+            guard let collectionViewItem = item as? CollectionViewItem else { continue }
+        
+            if mouseOverItemIndex != index {
+                collectionViewItem.hideMenu()
+            }
+        }
+        
+        mouseEntered(with: event)
+    }
     
     override func mouseExited(with event: NSEvent) {
         print("mouseExited")
@@ -245,7 +282,11 @@ class ViewController: NSViewController {
         
         for index in 0 ..< self.tweets.count {
             let item = self.collectionView.item(at: index)
-            guard let collectionViewItem = item as? CollectionViewItem else {return}
+            if item == nil {
+                continue
+            }
+            
+            guard let collectionViewItem = item as? CollectionViewItem else { continue }
             
             collectionViewItem.hideMenu()
         }
