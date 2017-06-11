@@ -139,16 +139,21 @@ class ViewController: NSViewController {
 
     func tweetActions(_ notification: Notification) {
         let userInfo = notification.userInfo as! Dictionary<String, Any>
-        let tweet = userInfo["Tweet"]
+        
+        let tweet = userInfo["Tweet"] as! Tweet
         let action = userInfo["Action"] as! String
         
         switch action {
             case "Favorite":
-            print("Favorite")
+                if tweet.favorited {
+                    swifter.unfavouriteTweet(forID: tweet.since)
+                } else {
+                    swifter.favouriteTweet(forID: tweet.since)
+                }
             case "Reply":
             print("Reply")
             case "Retweet":
-            print("Retweet")
+                swifter.retweetTweet(forID: tweet.since)
             case "Share":
             print("Share")
         default:
@@ -222,7 +227,6 @@ class ViewController: NSViewController {
     }
 
     override func mouseEntered(with event: NSEvent) {
-        print("mouseEntered - \(self.view.frame), \(self.collectionView.frame)")
         var mouseOverItemIndex = NSNotFound
         let point = self.collectionView.convert(event.locationInWindow, from: nil)
         for index in 0 ..< self.tweets.count {
@@ -268,8 +272,6 @@ class ViewController: NSViewController {
     }
     
     override func mouseExited(with event: NSEvent) {
-        print("mouseExited")
-        
         var mouseOverItemIndex = NSNotFound
         let point = self.collectionView.convert(event.locationInWindow, from: nil)
         for index in 0 ..< self.tweets.count {
@@ -304,20 +306,6 @@ class ViewController: NSViewController {
         didSet {
         // Update the view, if already loaded.
         }
-    }
-
-
-    @IBAction func selectFavoriteButton(_ sender: AnyObject) {
-        print("selected favorite button : \(sender.tag)")
-    }
-    @IBAction func selectReplyButton(_ sender: AnyObject) {
-        print("selected reply button : \(sender.tag)")
-    }
-    @IBAction func selectRetweetButton(_ sender: AnyObject) {
-        print("selected retweet button : \(sender.tag)")
-    }
-    @IBAction func selectShareButton(_ sender: AnyObject) {
-        print("selected share button : \(sender.tag)")
     }
 }
 
