@@ -17,8 +17,8 @@ class Tweet: NSObject {
     var since: String!
     var createdAt: String!
     
-    var favorited: Bool!
-    var retweeted: Bool!
+    var favorited: Bool! = false
+    var retweeted: Bool! = false
 }
 
 class ViewController: NSViewController {

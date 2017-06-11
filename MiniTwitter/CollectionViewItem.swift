@@ -32,6 +32,21 @@ class CollectionViewItem: NSCollectionViewItem {
     @IBOutlet var retweetButton: NSButton?
     @IBOutlet var shareButton: NSButton?
     
+    override var representedObject: Any? {
+        didSet {
+            applyButtonState()
+        }
+    }
+    
+    fileprivate func applyButtonState(){
+        guard let tweet = self.representedObject as? Tweet else { return }
+        
+        self.favoriteButton?.state = tweet.favorited! ? NSOnState : NSOffState
+        self.retweetButton?.state = tweet.retweeted! ? NSOnState : NSOffState
+        
+        print("But:\(String(describing: self.favoriteButton)), Fav:\(tweet.favorited!), Ret:\(tweet.retweeted!)")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.wantsLayer = true
@@ -41,6 +56,7 @@ class CollectionViewItem: NSCollectionViewItem {
         textTweet?.isSelectable = true
         
         menuStackView?.detachesHiddenViews = true
+//        applyButtonState()
         self.hideMenu()
     }
     
@@ -57,6 +73,9 @@ class CollectionViewItem: NSCollectionViewItem {
         
         let userInfo: [String: Any] = ["Tweet": tweet as AnyObject, "Action": "Favorite"]
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TweetAction"), object: self, userInfo: userInfo)
+        
+        tweet.favorited = !tweet.favorited
+        self.favoriteButton?.state = tweet.favorited! ? NSOnState : NSOffState
     }
 
     @IBAction func selectedReply(_ sender: AnyObject) {
@@ -71,6 +90,9 @@ class CollectionViewItem: NSCollectionViewItem {
         
         let userInfo: [String: Any] = ["Tweet": tweet as AnyObject, "Action": "Retweet"]
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TweetAction"), object: self, userInfo: userInfo)
+
+        tweet.retweeted = !tweet.retweeted
+        self.retweetButton?.state = tweet.retweeted! ? NSOnState : NSOffState
     }
 
     @IBAction func selectedShare(_ sender: AnyObject) {
