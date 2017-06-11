@@ -53,21 +53,29 @@ class CollectionViewItem: NSCollectionViewItem {
     }
     
     @IBAction func selectedFavorite(_ sender: AnyObject) {
+        guard let tweet = self.representedObject as? Tweet else { return }
+        
         let userInfo: [String: Any] = ["Tweet": tweet as AnyObject, "Action": "Favorite"]
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TweetAction"), object: self, userInfo: userInfo)
     }
 
     @IBAction func selectedReply(_ sender: AnyObject) {
+        guard let tweet = self.representedObject as? Tweet else { return }
+        
         let userInfo: [String: Any] = ["Tweet": tweet as AnyObject, "Action": "Reply"]
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TweetAction"), object: self, userInfo: userInfo)
     }
 
     @IBAction func selectedRetweet(_ sender: AnyObject) {
+        guard let tweet = self.representedObject as? Tweet else { return }
+        
         let userInfo: [String: Any] = ["Tweet": tweet as AnyObject, "Action": "Retweet"]
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TweetAction"), object: self, userInfo: userInfo)
     }
 
     @IBAction func selectedShare(_ sender: AnyObject) {
+        guard let tweet = self.representedObject as? Tweet else { return }
+        
         let userInfo: [String: Any] = ["Tweet": tweet as AnyObject, "Action": "Share"]
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TweetAction"), object: self, userInfo: userInfo)
     }
