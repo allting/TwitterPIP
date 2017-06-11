@@ -39,17 +39,17 @@ class CollectionViewItem: NSCollectionViewItem {
 
         textTweet?.allowsEditingTextAttributes = true
         textTweet?.isSelectable = true
+        
+        menuStackView?.detachesHiddenViews = true
+        self.hideMenu()
     }
     
-    
     func showMenu() {
-//        self.menuStackView?.setVisibilityPriority(NSStackViewVisibilityPriorityMustHold, for: self.view)
-//        self.menuStackView?.isHidden = false
+        self.menuStackView?.showViews(views: (self.menuStackView?.views)!, animated: true);
     }
     
     func hideMenu() {
-//        self.menuStackView?.setVisibilityPriority(NSStackViewVisibilityPriorityNotVisible, for: self.view)
-//        self.menuStackView?.hidden = true
+        self.menuStackView?.hideViews(views: (self.menuStackView?.views)!, animated: true);
     }
     
     @IBAction func selectedFavorite(_ sender: AnyObject) {
@@ -94,4 +94,49 @@ class MyTextField: NSTextField {
         super.mouseDown(with: event)
     }
     
+}
+
+
+extension NSStackView {
+    
+    func hideViews(views: [NSView], animated: Bool) {
+        views.forEach { view in
+            view.isHidden = true
+        }
+        if animated {
+            NSAnimationContext.runAnimationGroup({ context in
+                context.duration = 0.3
+                context.allowsImplicitAnimation = true
+                self.window?.layoutIfNeeded()
+                
+            }, completionHandler: nil)
+        }
+    }
+    
+    func showViews(views: [NSView], animated: Bool) {
+        views.forEach { view in
+            // unhide the view so the stack view knows how to layout…
+            view.isHidden = false
+            
+            if animated {
+                view.wantsLayer = true
+                // …but set opacity to 0 so the view is not visible during the animation
+                view.layer!.opacity = 0.0
+            }
+        }
+        
+        if animated {
+            NSAnimationContext.runAnimationGroup({ context in
+                context.duration = 0.3
+                context.allowsImplicitAnimation = true
+                self.window?.layoutIfNeeded()
+                
+            }, completionHandler: {
+                // reset opacity to show the views after the animation finished
+                views.forEach { view in
+                    view.layer!.opacity = 1.0
+                }
+            })
+        }
+    }
 }
