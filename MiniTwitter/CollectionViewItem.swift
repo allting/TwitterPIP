@@ -68,6 +68,11 @@ class CollectionViewItem: NSCollectionViewItem {
         self.menuStackView?.hideViews(views: (self.menuStackView?.views)!, animated: true);
     }
     
+    override func viewDidLayout() {
+        super.viewDidLayout()
+        textTweet?.invalidateIntrinsicContentSize()
+    }
+    
     @IBAction func selectedFavorite(_ sender: AnyObject) {
         guard let tweet = self.representedObject as? Tweet else { return }
         

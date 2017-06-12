@@ -14,32 +14,45 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView identifier="CollectionViewItem" id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="360" height="54"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+        <customView identifier="CollectionViewItem" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="107"/>
             <subviews>
-                <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tR4-WU-LBS">
-                    <rect key="frame" x="0.0" y="0.0" width="360" height="54"/>
+                <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tR4-WU-LBS">
+                    <rect key="frame" x="0.0" y="0.0" width="250" height="107"/>
                     <subviews>
-                        <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FpE-07-0qI">
-                            <rect key="frame" x="0.0" y="32" width="360" height="22"/>
+                        <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FpE-07-0qI">
+                            <rect key="frame" x="0.0" y="85" width="250" height="22"/>
                             <subviews>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGC-s6-Ed8">
-                                    <rect key="frame" x="-2" y="2.5" width="236" height="17"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="tIm-40-qcu">
-                                        <font key="font" metaFont="titleBar"/>
-                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                    <connections>
-                                        <binding destination="8Og-MO-HCm" name="value" keyPath="self.representedObject.name" id="KHb-2g-EF1"/>
-                                    </connections>
-                                </textField>
-                                <stackView distribution="fillEqually" orientation="horizontal" alignment="bottom" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xVC-fP-cpW">
-                                    <rect key="frame" x="240" y="4" width="120" height="14"/>
+                                <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xpC-ZX-PJ2">
+                                    <rect key="frame" x="0.0" y="3" width="158" height="17"/>
+                                    <subviews>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGC-s6-Ed8">
+                                            <rect key="frame" x="-2" y="0.0" width="37" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" usesSingleLineMode="YES" id="tIm-40-qcu">
+                                                <font key="font" metaFont="titleBar"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="8Og-MO-HCm" name="value" keyPath="self.representedObject.name" id="KHb-2g-EF1"/>
+                                            </connections>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="9ur-Pg-zf4"/>
+                                    </constraints>
+                                    <visibilityPriorities>
+                                        <integer value="1000"/>
+                                    </visibilityPriorities>
+                                    <customSpacing>
+                                        <real value="3.4028234663852886e+38"/>
+                                    </customSpacing>
+                                </stackView>
+                                <stackView distribution="fillEqually" orientation="horizontal" alignment="bottom" spacing="0.0" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xVC-fP-cpW">
+                                    <rect key="frame" x="158" y="4" width="92" height="14"/>
                                     <subviews>
                                         <button horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vZD-Nr-6WF">
-                                            <rect key="frame" x="0.0" y="0.0" width="30" height="12"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="23" height="12"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="12" id="ued-NY-h73"/>
                                             </constraints>
@@ -52,7 +65,7 @@
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yzd-QR-9uL">
-                                            <rect key="frame" x="30" y="1" width="30" height="12"/>
+                                            <rect key="frame" x="23" y="1" width="23" height="12"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="12" id="nFf-4K-n4x"/>
                                             </constraints>
@@ -65,7 +78,7 @@
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="cB4-L6-Pjb">
-                                            <rect key="frame" x="60" y="2" width="30" height="10"/>
+                                            <rect key="frame" x="46" y="2" width="23" height="10"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="10" id="MmU-mP-ciI"/>
                                             </constraints>
@@ -78,7 +91,7 @@
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jrO-06-vJW">
-                                            <rect key="frame" x="90" y="0.0" width="30" height="14"/>
+                                            <rect key="frame" x="69" y="0.0" width="23" height="14"/>
                                             <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSShareTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="Es9-Q2-WeB">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -92,7 +105,6 @@
                                         <constraint firstAttribute="height" constant="14" id="OdG-Nk-LtA"/>
                                         <constraint firstItem="yzd-QR-9uL" firstAttribute="centerY" secondItem="xVC-fP-cpW" secondAttribute="centerY" id="Vff-KF-Di6"/>
                                         <constraint firstItem="cB4-L6-Pjb" firstAttribute="centerY" secondItem="xVC-fP-cpW" secondAttribute="centerY" id="WoB-2f-3KF"/>
-                                        <constraint firstAttribute="width" constant="120" id="wGQ-kJ-aMi"/>
                                     </constraints>
                                     <visibilityPriorities>
                                         <integer value="1000"/>
@@ -109,6 +121,7 @@
                                 </stackView>
                             </subviews>
                             <constraints>
+                                <constraint firstItem="xpC-ZX-PJ2" firstAttribute="centerY" secondItem="FpE-07-0qI" secondAttribute="centerY" id="5k6-cJ-O1Z"/>
                                 <constraint firstAttribute="height" constant="22" id="SXK-kL-4MZ"/>
                                 <constraint firstAttribute="trailing" secondItem="xVC-fP-cpW" secondAttribute="trailing" id="uIR-g5-4Cz"/>
                             </constraints>
@@ -121,21 +134,34 @@
                                 <real value="3.4028234663852886e+38"/>
                             </customSpacing>
                         </stackView>
-                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cFE-O3-ik6" customClass="MyTextField" customModule="MiniTwitter" customModuleProvider="target">
-                            <rect key="frame" x="-2" y="0.0" width="154" height="32"/>
-                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="여기에 보여야 함. Tweet Tesxt aklsdjf http://ex.com" id="Sou-QI-VeX">
-                                <font key="font" metaFont="cellTitle"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                            <connections>
-                                <binding destination="8Og-MO-HCm" name="value" keyPath="self.representedObject.text" id="4rl-0f-nv2"/>
-                            </connections>
-                        </textField>
+                        <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1L3-jh-Uyp">
+                            <rect key="frame" x="0.0" y="0.0" width="204" height="85"/>
+                            <subviews>
+                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cFE-O3-ik6" customClass="MyTextField" customModule="MiniTwitter" customModuleProvider="target">
+                                    <rect key="frame" x="-2" y="51" width="208" height="34"/>
+                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Tweet Tesxt aklsdjf http://ex.com #HashTag" id="Sou-QI-VeX">
+                                        <font key="font" metaFont="message"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <binding destination="8Og-MO-HCm" name="value" keyPath="self.representedObject.text" id="4rl-0f-nv2"/>
+                                    </connections>
+                                </textField>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="a8Y-Sh-D9e"/>
+                            </constraints>
+                            <visibilityPriorities>
+                                <integer value="1000"/>
+                            </visibilityPriorities>
+                            <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                            </customSpacing>
+                        </stackView>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="FpE-07-0qI" firstAttribute="width" secondItem="tR4-WU-LBS" secondAttribute="width" id="kEe-dj-tEs"/>
-                        <constraint firstItem="cFE-O3-ik6" firstAttribute="top" secondItem="FpE-07-0qI" secondAttribute="bottom" id="qLi-EJ-s9Y"/>
+                        <constraint firstAttribute="trailing" secondItem="FpE-07-0qI" secondAttribute="trailing" id="pTy-pw-Ng3"/>
                     </constraints>
                     <visibilityPriorities>
                         <integer value="1000"/>

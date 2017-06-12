@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12118"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -667,8 +667,9 @@
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="272" height="525"/>
+                        <rect key="contentRect" x="196" y="240" width="250" height="525"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <value key="minSize" type="size" width="120" height="250"/>
                     </window>
                     <connections>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
@@ -683,44 +684,41 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="MiniTwitter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl" customClass="NSVisualEffectView">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="258"/>
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MvV-i0-M9g">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="258"/>
+                                <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                                 <clipView key="contentView" drawsBackground="NO" id="epz-2H-zmI">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="258"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <collectionView id="q5t-DY-EcT">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="258"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" id="vzP-U7-opn">
-                                                <size key="itemSize" width="280" height="62"/>
+                                                <size key="itemSize" width="250" height="60"/>
                                             </collectionViewFlowLayout>
                                             <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </collectionView>
                                     </subviews>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="qMT-Xh-uFg"/>
-                                </constraints>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="qqu-cl-z5T">
-                                    <rect key="frame" x="1" y="-15" width="0.0" height="16"/>
+                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="qqu-cl-z5T">
+                                    <rect key="frame" x="0.0" y="234" width="250" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="g9x-5E-Ydp">
-                                    <rect key="frame" x="284" y="0.0" width="16" height="258"/>
+                                    <rect key="frame" x="234" y="0.0" width="16" height="250"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="MvV-i0-M9g" secondAttribute="bottom" id="LoZ-lQ-c6X"/>
-                            <constraint firstItem="MvV-i0-M9g" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="WAD-4O-dGm"/>
-                            <constraint firstItem="MvV-i0-M9g" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="irZ-4Z-pA1"/>
-                            <constraint firstAttribute="trailing" secondItem="MvV-i0-M9g" secondAttribute="trailing" id="nfR-v7-hHB"/>
+                            <constraint firstItem="MvV-i0-M9g" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="GWi-LT-GTa"/>
+                            <constraint firstAttribute="bottom" secondItem="MvV-i0-M9g" secondAttribute="bottom" id="KAf-qx-J3E"/>
+                            <constraint firstAttribute="trailing" secondItem="MvV-i0-M9g" secondAttribute="trailing" id="RtD-ZN-Cne"/>
+                            <constraint firstItem="MvV-i0-M9g" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="lcf-3K-YEj"/>
                         </constraints>
                     </view>
                     <connections>
@@ -729,7 +727,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="74" y="909"/>
+            <point key="canvasLocation" x="74" y="905"/>
         </scene>
     </scenes>
 </document>
