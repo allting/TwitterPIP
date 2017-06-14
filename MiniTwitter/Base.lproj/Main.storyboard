@@ -704,7 +704,10 @@
                                     </subviews>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
-                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="qqu-cl-z5T">
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="550" id="mP4-Hp-K2S"/>
+                                </constraints>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="qqu-cl-z5T">
                                     <rect key="frame" x="0.0" y="234" width="250" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -717,7 +720,7 @@
                         <constraints>
                             <constraint firstItem="MvV-i0-M9g" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="GWi-LT-GTa"/>
                             <constraint firstAttribute="bottom" secondItem="MvV-i0-M9g" secondAttribute="bottom" id="KAf-qx-J3E"/>
-                            <constraint firstAttribute="trailing" secondItem="MvV-i0-M9g" secondAttribute="trailing" id="RtD-ZN-Cne"/>
+                            <constraint firstAttribute="trailing" secondItem="MvV-i0-M9g" secondAttribute="trailing" priority="750" id="RtD-ZN-Cne"/>
                             <constraint firstItem="MvV-i0-M9g" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="lcf-3K-YEj"/>
                         </constraints>
                     </view>
