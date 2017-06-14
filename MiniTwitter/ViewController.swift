@@ -146,14 +146,23 @@ class ViewController: NSViewController {
         switch action {
             case "Favorite":
                 if tweet.favorited {
-                    swifter.unfavouriteTweet(forID: tweet.since)
+                    swifter.unfavouriteTweet(forID: tweet.since, includeEntities: true, success: { (JSON) in
+                        tweet.favorited = !tweet.favorited
+                    }, failure: { (Error) in
+                    })
                 } else {
-                    swifter.favouriteTweet(forID: tweet.since)
+                    swifter.favouriteTweet(forID: tweet.since, includeEntities: true, success: { (JSON) in
+                        tweet.favorited = !tweet.favorited
+                    }, failure: { (Error) in
+                    })
                 }
             case "Reply":
             print("Reply")
             case "Retweet":
-                swifter.retweetTweet(forID: tweet.since)
+                swifter.retweetTweet(forID: tweet.since, trimUser: false, success: { (JSON) in
+                    tweet.retweeted = !tweet.retweeted
+                }, failure: { (Error) in
+                })
             case "Share":
             print("Share")
         default:
