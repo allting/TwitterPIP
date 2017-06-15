@@ -56,6 +56,9 @@ class CollectionViewItem: NSCollectionViewItem {
         textTweet?.isSelectable = true
         
         menuStackView?.detachesHiddenViews = true
+        
+        shareButton?.sendAction(on: NSEventMask.leftMouseDown)
+        
 //        applyButtonState()
         self.hideMenu()
     }
@@ -76,28 +79,28 @@ class CollectionViewItem: NSCollectionViewItem {
     @IBAction func selectedFavorite(_ sender: AnyObject) {
         guard let tweet = self.representedObject as? Tweet else { return }
         
-        let userInfo: [String: Any] = ["Tweet": tweet as AnyObject, "Action": "Favorite"]
+        let userInfo: [String: Any] = ["Tweet": tweet as AnyObject, "Action": "Favorite", "Sender": sender]
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TweetAction"), object: self, userInfo: userInfo)
     }
 
     @IBAction func selectedReply(_ sender: AnyObject) {
         guard let tweet = self.representedObject as? Tweet else { return }
         
-        let userInfo: [String: Any] = ["Tweet": tweet as AnyObject, "Action": "Reply"]
+        let userInfo: [String: Any] = ["Tweet": tweet as AnyObject, "Action": "Reply", "Sender": sender]
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TweetAction"), object: self, userInfo: userInfo)
     }
 
     @IBAction func selectedRetweet(_ sender: AnyObject) {
         guard let tweet = self.representedObject as? Tweet else { return }
         
-        let userInfo: [String: Any] = ["Tweet": tweet as AnyObject, "Action": "Retweet"]
+        let userInfo: [String: Any] = ["Tweet": tweet as AnyObject, "Action": "Retweet", "Sender": sender]
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TweetAction"), object: self, userInfo: userInfo)
     }
 
     @IBAction func selectedShare(_ sender: AnyObject) {
         guard let tweet = self.representedObject as? Tweet else { return }
         
-        let userInfo: [String: Any] = ["Tweet": tweet as AnyObject, "Action": "Share"]
+        let userInfo: [String: Any] = ["Tweet": tweet as AnyObject, "Action": "Share", "Sender": sender]
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TweetAction"), object: self, userInfo: userInfo)
     }
 }

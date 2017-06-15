@@ -13,6 +13,7 @@ import FormatterKit
 
 class Tweet: NSObject {
     var name: String!
+    var screenName: String!
     var text: NSAttributedString!
     var since: String!
     var createdAt: String!
@@ -106,6 +107,7 @@ class ViewController: NSViewController {
                         let tweet = Tweet()
                         tweet.text = self.attributedString($0["text"].string!)
                         tweet.name = $0["user"]["name"].string!
+                        tweet.screenName = $0["user"]["screen_name"].string!
                         tweet.since = $0["id_str"].string!
                         tweet.favorited = $0["favorited"].bool
                         tweet.retweeted = $0["retweeted"].bool
@@ -142,6 +144,7 @@ class ViewController: NSViewController {
         
         let tweet = userInfo["Tweet"] as! Tweet
         let action = userInfo["Action"] as! String
+        let sender = userInfo["Sender"] as! NSControl
         
         switch action {
             case "Favorite":
@@ -158,6 +161,7 @@ class ViewController: NSViewController {
                 }
             case "Reply":
             print("Reply")
+//            swifter.postTweet(status: <#T##String#>, inReplyToStatusID: tweet.since, coordinate: <#T##(lat: Double, long: Double)?#>, placeID: <#T##Double?#>, displayCoordinates: <#T##Bool?#>, trimUser: <#T##Bool?#>, media_ids: <#T##[String]#>, success: <#T##Swifter.SuccessHandler?##Swifter.SuccessHandler?##(JSON) -> Void#>, failure: <#T##Swifter.FailureHandler?##Swifter.FailureHandler?##(Error) -> Void#>)
             case "Retweet":
                 swifter.retweetTweet(forID: tweet.since, trimUser: false, success: { (JSON) in
                     tweet.retweeted = !tweet.retweeted
@@ -165,6 +169,9 @@ class ViewController: NSViewController {
                 })
             case "Share":
             print("Share")
+            let shareItems : NSArray = [tweet.text]
+            let sharingPicker = NSSharingServicePicker(items: shareItems as! [Any])
+            sharingPicker.show(relativeTo: NSZeroRect, of: sender, preferredEdge: NSRectEdge.minY)
         default:
             print("Unknown tweet action")
         }
@@ -186,6 +193,7 @@ class ViewController: NSViewController {
                 let tweet = Tweet()
                 tweet.text = self.attributedString($0["text"].string!)
                 tweet.name = $0["user"]["name"].string!
+                tweet.screenName = $0["user"]["screen_name"].string!
                 tweet.since = $0["id_str"].string!
 //                tweet.createdAt = $0["created_at"].string!
                 return tweet
