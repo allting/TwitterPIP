@@ -116,6 +116,7 @@ class ViewController: NSViewController {
                     }
                     
                     NotificationCenter.default.addObserver(self, selector: #selector(self.tweetActions), name: Notification.Name("TweetAction"), object: nil)
+                    NotificationCenter.default.addObserver(self, selector: #selector(self.replyActions), name: Notification.Name("ReplyAction"), object: nil)
                     
                     self.collectionView.reloadData()
                     Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(self.update), userInfo: nil, repeats: true);
@@ -139,6 +140,16 @@ class ViewController: NSViewController {
         }
     }
 
+    @IBAction func newTweet(_ sender: Any) {
+        let twitterService = NSSharingService(named: NSSharingServiceNamePostOnTwitter)
+        twitterService?.delegate = self
+        twitterService?.perform(withItems: [""])
+    }
+    
+    lazy var tweetWindowController : NSWindowController = {
+        return self.storyboard!.instantiateController(withIdentifier: "TweetWindowController") as! NSWindowController
+    }()
+    
     func tweetActions(_ notification: Notification) {
         let userInfo = notification.userInfo as! Dictionary<String, Any>
         
@@ -161,7 +172,13 @@ class ViewController: NSViewController {
                 }
             case "Reply":
             print("Reply")
-//            swifter.postTweet(status: <#T##String#>, inReplyToStatusID: tweet.since, coordinate: <#T##(lat: Double, long: Double)?#>, placeID: <#T##Double?#>, displayCoordinates: <#T##Bool?#>, trimUser: <#T##Bool?#>, media_ids: <#T##[String]#>, success: <#T##Swifter.SuccessHandler?##Swifter.SuccessHandler?##(JSON) -> Void#>, failure: <#T##Swifter.FailureHandler?##Swifter.FailureHandler?##(Error) -> Void#>)
+//            let twitterService = NSSharingService(named: NSSharingServiceNamePostOnTwitter)
+//            twitterService?.delegate = self
+//            twitterService?.recipients = [tweet.screenName]
+//            twitterService?.perform(withItems: [tweet.text])
+            
+
+            self.performSegue(withIdentifier: "showTweetWindowController", sender: tweet)
             case "Retweet":
                 swifter.retweetTweet(forID: tweet.since, trimUser: false, success: { (JSON) in
                     tweet.retweeted = !tweet.retweeted
@@ -176,7 +193,30 @@ class ViewController: NSViewController {
             print("Unknown tweet action")
         }
     }
+    
+    func replyActions(_ notification: Notification) {
+        let userInfo = notification.userInfo as! Dictionary<String, Any>
+        
+        let tweet = userInfo["Tweet"] as! Tweet
+        let reply = userInfo["Reply"] as! String
+        let sender = userInfo["Sender"] as! NSView
 
+        swifter.postTweet(status: reply, inReplyToStatusID: tweet.since, coordinate: nil, placeID: nil, displayCoordinates: false, trimUser: nil, media_ids: [], success: { (JSON) in
+            print("succeeded reply")
+            sender.window?.close()
+        }) { (Error) in
+            print("failed reply")
+            sender.window?.close()
+        }
+    }
+    
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showTweetWindowController" {
+            guard let windowController = segue.destinationController as? NSWindowController else { return }
+            windowController.window?.contentViewController?.representedObject = sender
+        }
+    }
+    
     func update(){
         let since = self.tweets.first?.since
         print("update - \(String(describing: since))")
@@ -375,5 +415,17 @@ extension ViewController : NSCollectionViewDelegateFlowLayout {
         bounds.size.height += 28
         bounds.size.width = collectionView.bounds.width
         return  bounds.size
+    }
+}
+
+extension ViewController : NSSharingServiceDelegate {
+    func sharingService(_ sharingService: NSSharingService, willShareItems items: [Any]) {
+        print("sharingSevice, willShareItems: \(items)")
+    }
+    func sharingService(_ sharingService: NSSharingService, didShareItems items: [Any]) {
+        print("sharingSevice, didShareItems: \(items)")
+    }
+    func sharingService(_ sharingService: NSSharingService, didFailToShareItems items: [Any], error: Error) {
+        print("sharingSevice, didFailToShareItems: \(items), error: \(error)")
     }
 }
