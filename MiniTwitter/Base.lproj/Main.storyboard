@@ -700,7 +700,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <collectionView id="q5t-DY-EcT">
+                                        <collectionView selectable="YES" id="q5t-DY-EcT">
                                             <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" id="vzP-U7-opn">
@@ -765,19 +765,19 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fillProportionally" orientation="vertical" alignment="trailing" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UHp-pX-hCV">
-                                <rect key="frame" x="0.0" y="0.0" width="486" height="203"/>
+                                <rect key="frame" x="0.0" y="0.0" width="486" height="180"/>
                                 <subviews>
                                     <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYd-jf-pzf">
-                                        <rect key="frame" x="0.0" y="82" width="486" height="121"/>
+                                        <rect key="frame" x="0.0" y="82" width="486" height="98"/>
                                         <clipView key="contentView" id="uY6-Kl-ogi">
-                                            <rect key="frame" x="0.0" y="0.0" width="486" height="121"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="486" height="98"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textView importsGraphics="NO" richText="NO" usesFontPanel="YES" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="MNd-8t-ebi">
-                                                    <rect key="frame" x="0.0" y="-1" width="486" height="121"/>
+                                                    <rect key="frame" x="0.0" y="-1" width="486" height="98"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <size key="minSize" width="486" height="121"/>
+                                                    <size key="minSize" width="486" height="98"/>
                                                     <size key="maxSize" width="486" height="10000000"/>
                                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 </textView>
@@ -789,7 +789,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="aBi-fh-KJ8">
-                                            <rect key="frame" x="286" y="0.0" width="16" height="115"/>
+                                            <rect key="frame" x="470" y="0.0" width="16" height="98"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
@@ -800,10 +800,10 @@
                                         </constraints>
                                     </customView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tFk-g0-Tar">
-                                        <rect key="frame" x="235" y="0.0" width="251" height="22"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="486" height="22"/>
                                         <subviews>
                                             <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYa-Om-ig9">
-                                                <rect key="frame" x="0.0" y="0.0" width="96" height="22"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="22"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="PhE-if-9dL">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -811,7 +811,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dog-2h-NUm">
-                                                <rect key="frame" x="98" y="-6.5" width="82" height="32"/>
+                                                <rect key="frame" x="337" y="-6.5" width="82" height="32"/>
                                                 <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KXT-9B-soK">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -824,7 +824,7 @@ Gw
                                                 </connections>
                                             </button>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ma8-Gy-Bm1">
-                                                <rect key="frame" x="176" y="-6.5" width="81" height="32"/>
+                                                <rect key="frame" x="415" y="-6.5" width="77" height="32"/>
                                                 <buttonCell key="cell" type="push" title="Tweet" bezelStyle="rounded" imagePosition="right" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Q5e-Ul-bHa">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>

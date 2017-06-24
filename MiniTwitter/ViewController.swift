@@ -392,6 +392,28 @@ extension ViewController : NSCollectionViewDataSource {
         return item
     }
     
+    func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> NSView {
+        var nibName: String?
+        if kind == NSCollectionElementKindSectionHeader {
+            nibName = "HeaderView"
+        } else if kind == NSCollectionElementKindSectionFooter {
+            nibName = "FooterView"
+        }
+        let view = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: nibName!, for: indexPath)
+        
+        view.wantsLayer = true
+        //        view.layer?.backgroundColor = NSColor.green.cgColor
+        
+        if let view = view as? HeaderView {
+            view.searchField?.needsLayout = true
+        }
+        //        } else if let view = view as? FooterView {
+        //            view.titleTextField?.stringValue = "Custom Footer"
+        //        }
+        return view
+    }
+
+    
 }
 
 extension ViewController : NSCollectionViewDelegateFlowLayout {
@@ -415,6 +437,14 @@ extension ViewController : NSCollectionViewDelegateFlowLayout {
         bounds.size.height += 28
         bounds.size.width = collectionView.bounds.width
         return  bounds.size
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> NSSize {
+        return NSSize(width: 0, height: 44)
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, referenceSizeForFooterInSection section: Int) -> NSSize {
+        return NSSize(width: 0, height: 44)
     }
 }
 
