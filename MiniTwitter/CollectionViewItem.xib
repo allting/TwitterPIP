@@ -27,7 +27,7 @@
                                     <rect key="frame" x="0.0" y="3" width="158" height="17"/>
                                     <subviews>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGC-s6-Ed8">
-                                            <rect key="frame" x="-2" y="0.0" width="37" height="17"/>
+                                            <rect key="frame" x="6" y="0.0" width="37" height="17"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" usesSingleLineMode="YES" id="tIm-40-qcu">
                                                 <font key="font" metaFont="titleBar"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -40,6 +40,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="9ur-Pg-zf4"/>
+                                        <constraint firstItem="wGC-s6-Ed8" firstAttribute="leading" secondItem="xpC-ZX-PJ2" secondAttribute="leading" constant="8" id="wN2-gY-HHH"/>
                                     </constraints>
                                     <visibilityPriorities>
                                         <integer value="1000"/>
@@ -134,11 +135,11 @@
                                 <real value="3.4028234663852886e+38"/>
                             </customSpacing>
                         </stackView>
-                        <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1L3-jh-Uyp">
-                            <rect key="frame" x="0.0" y="0.0" width="204" height="78"/>
+                        <stackView distribution="equalSpacing" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1L3-jh-Uyp">
+                            <rect key="frame" x="0.0" y="0.0" width="220" height="78"/>
                             <subviews>
                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cFE-O3-ik6" customClass="MyTextField" customModule="MiniTwitter" customModuleProvider="target">
-                                    <rect key="frame" x="-2" y="44" width="208" height="34"/>
+                                    <rect key="frame" x="6" y="44" width="208" height="34"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Tweet Tesxt aklsdjf http://ex.com #HashTag" id="Sou-QI-VeX">
                                         <font key="font" metaFont="message"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -154,6 +155,7 @@
                                 </textField>
                             </subviews>
                             <constraints>
+                                <constraint firstItem="cFE-O3-ik6" firstAttribute="leading" secondItem="1L3-jh-Uyp" secondAttribute="leading" constant="8" id="DTf-EL-qLT"/>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="a8Y-Sh-D9e"/>
                             </constraints>
                             <visibilityPriorities>
