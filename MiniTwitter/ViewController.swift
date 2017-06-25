@@ -426,7 +426,8 @@ extension ViewController : NSCollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: NSCollectionView,
                         layout collectionViewLayout: NSCollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> NSSize {
-        let string = tweets[indexPath.item].text
+        guard let tweets = self.tweetsArrayController.arrangedObjects as? NSArray else { return NSSize(width: collectionView.bounds.width, height: 50) }
+        let string = (tweets[indexPath.item] as! Tweet).text
         
         let textSize = NSMakeSize(collectionView.bounds.width, 500)
         let textStorage = NSTextStorage.init(attributedString: attributedString(string!))
