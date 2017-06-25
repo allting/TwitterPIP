@@ -33,6 +33,8 @@ class ViewController: NSViewController {
     
     private var trackingArea: NSTrackingArea?
     
+    var headerView: HeaderView? = nil
+    
     static let formatter: TTTTimeIntervalFormatter = {
         let formatter = TTTTimeIntervalFormatter()
         formatter.locale = NSLocale.current
@@ -131,6 +133,7 @@ class ViewController: NSViewController {
                     if let headerView = view as? HeaderView {
                         let options = [NSDisplayNameBindingOption: "predicate", NSPredicateFormatBindingOption: "(self.name contains[cd] $value) OR (self.text contains[cd] $value)"]
                         headerView.searchField?.bind("predicate", to: self.tweetsArrayController, withKeyPath: NSFilterPredicateBinding, options: options)
+                        self.headerView = headerView
                     }
 
                     NotificationCenter.default.addObserver(self, selector: #selector(self.tweetActions), name: Notification.Name("TweetAction"), object: nil)
@@ -296,6 +299,9 @@ class ViewController: NSViewController {
         super.viewWillLayout()
         
         collectionView.collectionViewLayout?.invalidateLayout()
+
+        self.headerView?.frame.size.width = self.collectionView.frame.size.width
+        self.headerView?.needsLayout = true
     }
 
     override func mouseEntered(with event: NSEvent) {
