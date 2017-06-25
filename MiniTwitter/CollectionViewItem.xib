@@ -15,13 +15,13 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView identifier="CollectionViewItem" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="250" height="107"/>
+            <rect key="frame" x="0.0" y="0.0" width="250" height="100"/>
             <subviews>
                 <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tR4-WU-LBS">
-                    <rect key="frame" x="0.0" y="0.0" width="250" height="107"/>
+                    <rect key="frame" x="0.0" y="0.0" width="250" height="100"/>
                     <subviews>
                         <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FpE-07-0qI">
-                            <rect key="frame" x="0.0" y="85" width="250" height="22"/>
+                            <rect key="frame" x="0.0" y="78" width="250" height="22"/>
                             <subviews>
                                 <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xpC-ZX-PJ2">
                                     <rect key="frame" x="0.0" y="3" width="158" height="17"/>
@@ -135,17 +135,21 @@
                             </customSpacing>
                         </stackView>
                         <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1L3-jh-Uyp">
-                            <rect key="frame" x="0.0" y="0.0" width="204" height="85"/>
+                            <rect key="frame" x="0.0" y="0.0" width="204" height="78"/>
                             <subviews>
                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cFE-O3-ik6" customClass="MyTextField" customModule="MiniTwitter" customModuleProvider="target">
-                                    <rect key="frame" x="-2" y="51" width="208" height="34"/>
+                                    <rect key="frame" x="-2" y="44" width="208" height="34"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Tweet Tesxt aklsdjf http://ex.com #HashTag" id="Sou-QI-VeX">
                                         <font key="font" metaFont="message"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                     <connections>
-                                        <binding destination="8Og-MO-HCm" name="value" keyPath="self.representedObject.text" id="4rl-0f-nv2"/>
+                                        <binding destination="8Og-MO-HCm" name="value" keyPath="self.representedObject.text" id="rzX-dh-yM5">
+                                            <dictionary key="options">
+                                                <string key="NSValueTransformerName">TweetStringTransformer</string>
+                                            </dictionary>
+                                        </binding>
                                     </connections>
                                 </textField>
                             </subviews>

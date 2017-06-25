@@ -10,10 +10,10 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="c22-O7-iKe" customClass="HeaderView" customModule="MiniTwitter" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="480" height="60"/>
             <subviews>
-                <searchField wantsLayer="YES" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMN-5z-PDn">
-                    <rect key="frame" x="10" y="4" width="460" height="22"/>
+                <searchField identifier="HeaderView" wantsLayer="YES" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMN-5z-PDn">
+                    <rect key="frame" x="10" y="8" width="460" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="Cdn-dQ-QYj"/>
                     </constraints>
@@ -25,9 +25,10 @@
                 </searchField>
             </subviews>
             <constraints>
-                <constraint firstAttribute="height" constant="50" id="CvE-Qe-sJL"/>
+                <constraint firstItem="cMN-5z-PDn" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="30" id="AjR-gU-WcX"/>
+                <constraint firstAttribute="height" constant="60" id="CvE-Qe-sJL"/>
                 <constraint firstItem="cMN-5z-PDn" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="10" id="JEe-1U-ikl"/>
-                <constraint firstAttribute="bottom" secondItem="cMN-5z-PDn" secondAttribute="bottom" constant="4" id="ogn-Wn-uMc"/>
+                <constraint firstAttribute="bottom" secondItem="cMN-5z-PDn" secondAttribute="bottom" constant="8" id="ogn-Wn-uMc"/>
                 <constraint firstAttribute="trailing" secondItem="cMN-5z-PDn" secondAttribute="trailing" constant="10" id="p9T-0d-1rn"/>
             </constraints>
         </customView>

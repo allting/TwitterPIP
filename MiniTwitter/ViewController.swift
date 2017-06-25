@@ -14,7 +14,7 @@ import FormatterKit
 class Tweet: NSObject {
     var name: String!
     var screenName: String!
-    var text: NSAttributedString!
+    var text: String!
     var since: String!
     var createdAt: String!
     
@@ -24,6 +24,7 @@ class Tweet: NSObject {
 
 class ViewController: NSViewController {
     @IBOutlet weak var collectionView: NSCollectionView!
+    @IBOutlet weak var tweetsArrayController: NSArrayController!
     
     let useACAccount = true
     var swifter: Swifter!
@@ -46,20 +47,25 @@ class ViewController: NSViewController {
         return formatter
     }()
     
-
     fileprivate func configureCollectionView(){
 //        let flowLayout = NSCollectionViewFlowLayout()
 //        flowLayout.itemSize = NSSize(width: 300, height: 40)
 //        flowLayout.sectionInset = EdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
-//        flowLayout.minimumInteritemSpacing = 20
-//        flowLayout.minimumLineSpacing = 10
+//        flowLayout.minimumInteritemSpacing = 0
+//        flowLayout.minimumLineSpacing = 0
 //        collectionView.collectionViewLayout = flowLayout
         
-        collectionView.dataSource = self
+//        collectionView.dataSource = self
         collectionView.delegate = self
 
-        view.wantsLayer = true
+        let nib = NSNib(nibNamed: "CollectionViewItem", bundle: nil)
+        collectionView.register(nib, forItemWithIdentifier: "CollectionViewItem")
+
+        self.view.wantsLayer = true
         collectionView.backgroundColors = [NSColor.clear]
+
+        let headerNib = NSNib(nibNamed: "HeaderView", bundle: nil)
+        collectionView.register(headerNib, forSupplementaryViewOfKind: NSCollectionElementKindSectionHeader, withIdentifier: "HeaderView")
     }
     
     fileprivate func adjustTrackingArea() {
@@ -76,6 +82,9 @@ class ViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        tweetsArrayController.managedObjectContext = (NSApp.delegate as! AppDelegate).persistentContainer.viewContext
+//        tweetsArrayController.entityName = "TweetEntity"
         
         configureCollectionView()
         adjustTrackingArea()
@@ -103,9 +112,9 @@ class ViewController: NSViewController {
                 self.swifter.getHomeTimeline(count: 20, success: { statuses in
                     print(statuses)
                     guard let tweets = statuses.array else { return }
-                    self.tweets = tweets.map {
+                    let tweetArray: [Tweet] = tweets.map {
                         let tweet = Tweet()
-                        tweet.text = self.attributedString($0["text"].string!)
+                        tweet.text = $0["text"].string!
                         tweet.name = $0["user"]["name"].string!
                         tweet.screenName = $0["user"]["screen_name"].string!
                         tweet.since = $0["id_str"].string!
@@ -115,10 +124,18 @@ class ViewController: NSViewController {
                         return tweet
                     }
                     
+                    self.tweets = tweetArray
+                    
+                    let view = self.collectionView.makeSupplementaryView(ofKind: NSCollectionElementKindSectionHeader, withIdentifier: "HeaderView", for: IndexPath(item: 0, section: 0))
+                    view.wantsLayer = true
+                    if let headerView = view as? HeaderView {
+                        let options = [NSDisplayNameBindingOption: "predicate", NSPredicateFormatBindingOption: "(self.name contains[cd] $value) OR (self.text contains[cd] $value)"]
+                        headerView.searchField?.bind("predicate", to: self.tweetsArrayController, withKeyPath: NSFilterPredicateBinding, options: options)
+                    }
+
                     NotificationCenter.default.addObserver(self, selector: #selector(self.tweetActions), name: Notification.Name("TweetAction"), object: nil)
                     NotificationCenter.default.addObserver(self, selector: #selector(self.replyActions), name: Notification.Name("ReplyAction"), object: nil)
                     
-                    self.collectionView.reloadData()
                     Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(self.update), userInfo: nil, repeats: true);
                     
                 }, failure: failureHandler)
@@ -130,7 +147,7 @@ class ViewController: NSViewController {
                     guard let tweets = statuses.array else { return }
                     self.tweets = tweets.map {
                         let tweet = Tweet()
-                        tweet.text = self.attributedString($0["text"].string!)
+                        tweet.text = $0["text"].string!
                         tweet.name = $0["user"]["name"].string!
 //                        tweet.createdAt = $0["created_at"].string!
                         return tweet
@@ -140,6 +157,7 @@ class ViewController: NSViewController {
         }
     }
 
+    
     @IBAction func newTweet(_ sender: Any) {
         let twitterService = NSSharingService(named: NSSharingServiceNamePostOnTwitter)
         twitterService?.delegate = self
@@ -231,7 +249,7 @@ class ViewController: NSViewController {
             
             let temp: [Tweet] = tweets.map {
                 let tweet = Tweet()
-                tweet.text = self.attributedString($0["text"].string!)
+                tweet.text = $0["text"].string!
                 tweet.name = $0["user"]["name"].string!
                 tweet.screenName = $0["user"]["screen_name"].string!
                 tweet.since = $0["id_str"].string!
@@ -240,9 +258,6 @@ class ViewController: NSViewController {
             }
             
             self.tweets = temp + self.tweets
-
-            self.collectionView.reloadData()
-            
         }, failure: failureHandler)
     }
     
@@ -377,18 +392,10 @@ extension ViewController : NSCollectionViewDataSource {
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = collectionView.makeItem(withIdentifier: "CollectionViewItem", for: indexPath)
-//        guard let collectionViewItem = item as? CollectionViewItem else {return item}
 
         let tweet = tweets[indexPath.item];
         item.representedObject = tweet
 
-//        collectionViewItem.representedObject = tweet
-        
-//        let createdDate = ViewController.dateConvertFormatter.date(from: tweets[indexPath.item].createdAt)
-//        let timeInterval = createdDate?.timeIntervalSince(Date())
-//
-//        collectionViewItem.createdAt?.stringValue = ViewController.formatter.string(forTimeInterval: timeInterval!)
-//        collectionViewItem.createdAt?.sizeToFit()
         return item
     }
     
@@ -404,16 +411,15 @@ extension ViewController : NSCollectionViewDataSource {
         view.wantsLayer = true
         //        view.layer?.backgroundColor = NSColor.green.cgColor
         
-        if let view = view as? HeaderView {
-            view.searchField?.needsLayout = true
+        if let headerView = view as? HeaderView {
+            let options = [NSDisplayNameBindingOption: "predicate", NSPredicateFormatBindingOption: "(self.name contains[cd] $value) OR (self.text contains[cd] $value)"]
+            headerView.searchField?.bind("predicate", to: self.tweetsArrayController, withKeyPath: NSFilterPredicateBinding, options: options)
         }
         //        } else if let view = view as? FooterView {
         //            view.titleTextField?.stringValue = "Custom Footer"
         //        }
         return view
     }
-
-    
 }
 
 extension ViewController : NSCollectionViewDelegateFlowLayout {
@@ -423,7 +429,7 @@ extension ViewController : NSCollectionViewDelegateFlowLayout {
         let string = tweets[indexPath.item].text
         
         let textSize = NSMakeSize(collectionView.bounds.width, 500)
-        let textStorage = NSTextStorage.init(attributedString: string!)
+        let textStorage = NSTextStorage.init(attributedString: attributedString(string!))
         let layoutManager = NSLayoutManager.init()
         let textContainer = NSTextContainer.init(size: textSize)
         
@@ -440,7 +446,7 @@ extension ViewController : NSCollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> NSSize {
-        return NSSize(width: 0, height: 44)
+        return NSSize(width: 0, height: 60)
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, referenceSizeForFooterInSection section: Int) -> NSSize {

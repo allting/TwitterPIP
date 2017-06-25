@@ -8,19 +8,7 @@
 
 import Cocoa
 
-class CollectionViewItem: NSCollectionViewItem {
-    fileprivate var _tweet: Tweet?
-    var tweet: Tweet? {
-        set {
-            self.textTweet?.attributedStringValue = newValue!.text
-            self.textField?.stringValue = newValue!.name
-            _tweet = newValue
-        }
-        get {
-            return _tweet
-        }
-    }
-    
+class CollectionViewItem: NSCollectionViewItem {    
     fileprivate var _indexPath : IndexPath?
     
     @IBOutlet var textTweet: NSTextField?

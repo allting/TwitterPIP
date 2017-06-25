@@ -691,51 +691,60 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="MiniTwitter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl" customClass="NSVisualEffectView">
-                        <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                        <rect key="frame" x="0.0" y="0.0" width="251" height="214"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MvV-i0-M9g">
-                                <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
-                                <clipView key="contentView" drawsBackground="NO" id="epz-2H-zmI">
-                                    <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                            <scrollView wantsLayer="YES" focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYY-2X-EDb">
+                                <rect key="frame" x="0.0" y="0.0" width="251" height="214"/>
+                                <clipView key="contentView" id="Rut-Ke-6u2">
+                                    <rect key="frame" x="0.0" y="0.0" width="251" height="214"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <collectionView selectable="YES" id="q5t-DY-EcT">
-                                            <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                                        <collectionView focusRingType="none" id="twT-Oq-18j">
+                                            <rect key="frame" x="0.0" y="0.0" width="251" height="214"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <collectionViewFlowLayout key="collectionViewLayout" id="vzP-U7-opn">
-                                                <size key="itemSize" width="250" height="60"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" id="IXv-j2-awf">
+                                                <size key="itemSize" width="250" height="50"/>
                                             </collectionViewFlowLayout>
                                             <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <binding destination="wCx-WN-IrP" name="content" keyPath="arrangedObjects" id="WJS-5k-ohk"/>
+                                            </connections>
                                         </collectionView>
                                     </subviews>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="qqu-cl-z5T">
-                                    <rect key="frame" x="0.0" y="234" width="250" height="16"/>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Kir-gC-plA">
+                                    <rect key="frame" x="-100" y="-100" width="233" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="g9x-5E-Ydp">
-                                    <rect key="frame" x="234" y="0.0" width="16" height="250"/>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="k8c-Ra-mpF">
+                                    <rect key="frame" x="233" y="1" width="16" height="212"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="MvV-i0-M9g" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="GWi-LT-GTa"/>
-                            <constraint firstAttribute="bottom" secondItem="MvV-i0-M9g" secondAttribute="bottom" id="KAf-qx-J3E"/>
-                            <constraint firstAttribute="trailing" secondItem="MvV-i0-M9g" secondAttribute="trailing" id="RtD-ZN-Cne"/>
-                            <constraint firstItem="MvV-i0-M9g" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="lcf-3K-YEj"/>
+                            <constraint firstAttribute="trailing" secondItem="bYY-2X-EDb" secondAttribute="trailing" id="Ifj-qw-U2j"/>
+                            <constraint firstItem="bYY-2X-EDb" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="Klk-D4-iil"/>
+                            <constraint firstItem="bYY-2X-EDb" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="bMl-vL-lvE"/>
+                            <constraint firstAttribute="bottom" secondItem="bYY-2X-EDb" secondAttribute="bottom" id="fpn-Vw-gpt"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="q5t-DY-EcT" id="4ck-e8-JqW"/>
+                        <outlet property="collectionView" destination="twT-Oq-18j" id="nS5-Bh-86a"/>
+                        <outlet property="tweetsArrayController" destination="wCx-WN-IrP" id="naB-Vg-mJf"/>
                         <segue destination="PIJ-dp-yhM" kind="show" identifier="showTweetWindowController" id="5L4-Z1-fwe"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <arrayController objectClassName="Tweet" editable="NO" automaticallyPreparesContent="YES" id="wCx-WN-IrP">
+                    <connections>
+                        <binding destination="XfG-lQ-9wD" name="contentArray" keyPath="self.tweets" id="8Uc-Hf-aEV"/>
+                    </connections>
+                </arrayController>
             </objects>
-            <point key="canvasLocation" x="74" y="905"/>
+            <point key="canvasLocation" x="73.5" y="806"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="z2T-rm-voc">
