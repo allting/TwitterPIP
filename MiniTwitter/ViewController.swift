@@ -473,7 +473,7 @@ extension ViewController : NSCollectionViewDelegateFlowLayout {
             let glyphRange = layoutManager.glyphRange(for: textContainer)
             var bounds = layoutManager.boundingRect(forGlyphRange: glyphRange, in: textContainer)
             // TODO: Optional
-            bounds.size.height += (28 + 8)  // 28: title height, 8: space of items
+            bounds.size.height += (28 + 14)  // 28: title height, 14: space of items
             bounds.size.width = collectionView.bounds.width
             
             tweet.itemHeight = bounds.height
