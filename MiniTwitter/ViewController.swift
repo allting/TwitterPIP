@@ -92,6 +92,9 @@ class ViewController: NSViewController {
         
         configureCollectionView()
         adjustTrackingArea()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.windowDidChange), name: .NSWindowDidResize, object: nil)
+        
 
         let failureHandler: (Error) -> Void = { print($0.localizedDescription) }
 
@@ -162,6 +165,9 @@ class ViewController: NSViewController {
         }
     }
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     
     @IBAction func newTweet(_ sender: Any) {
         let twitterService = NSSharingService(named: NSSharingServiceNamePostOnTwitter)
@@ -304,6 +310,15 @@ class ViewController: NSViewController {
 
         self.headerView?.frame.size.width = self.collectionView.frame.size.width
         self.headerView?.needsLayout = true
+    }
+    
+    func windowDidChange() {
+        let tweetArray: [Tweet] = self.tweets.map {
+            $0.itemHeight = 0
+            return $0
+        }
+        
+        self.tweets = tweetArray
     }
 
     override func mouseEntered(with event: NSEvent) {
@@ -457,7 +472,8 @@ extension ViewController : NSCollectionViewDelegateFlowLayout {
             
             let glyphRange = layoutManager.glyphRange(for: textContainer)
             var bounds = layoutManager.boundingRect(forGlyphRange: glyphRange, in: textContainer)
-            bounds.size.height += 28
+            // TODO: Optional
+            bounds.size.height += (28 + 8)  // 28: title height, 8: space of items
             bounds.size.width = collectionView.bounds.width
             
             tweet.itemHeight = bounds.height
