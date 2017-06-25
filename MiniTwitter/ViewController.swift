@@ -20,6 +20,8 @@ class Tweet: NSObject {
     
     var favorited: Bool! = false
     var retweeted: Bool! = false
+    
+    var itemHeight: CGFloat! = 0
 }
 
 class ViewController: NSViewController {
@@ -432,24 +434,37 @@ extension ViewController : NSCollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: NSCollectionView,
                         layout collectionViewLayout: NSCollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> NSSize {
-        guard let tweets = self.tweetsArrayController.arrangedObjects as? NSArray else { return NSSize(width: collectionView.bounds.width, height: 50) }
-        let string = (tweets[indexPath.item] as! Tweet).text
+        guard let tweets = self.tweetsArrayController.arrangedObjects as? NSArray else {
+            return NSSize(width: collectionView.bounds.width, height: 50)
+        }
         
-        let textSize = NSMakeSize(collectionView.bounds.width, 500)
-        let textStorage = NSTextStorage.init(attributedString: attributedString(string!))
-        let layoutManager = NSLayoutManager.init()
-        let textContainer = NSTextContainer.init(size: textSize)
+        guard let tweet = tweets[indexPath.item] as? Tweet else {
+            return NSSize(width: collectionView.bounds.width, height: 50)
+        }
         
-        layoutManager.addTextContainer(textContainer)
-        textStorage.addLayoutManager(layoutManager)
-        textContainer.lineFragmentPadding = 0
-        layoutManager.backgroundLayoutEnabled = true
-        
-        let glyphRange = layoutManager.glyphRange(for: textContainer)
-        var bounds = layoutManager.boundingRect(forGlyphRange: glyphRange, in: textContainer)
-        bounds.size.height += 28
-        bounds.size.width = collectionView.bounds.width
-        return  bounds.size
+        if tweet.itemHeight == 0 {
+            let string = tweet.text
+            
+            let textSize = NSMakeSize(collectionView.bounds.width, 500)
+            let textStorage = NSTextStorage.init(attributedString: attributedString(string!))
+            let layoutManager = NSLayoutManager.init()
+            let textContainer = NSTextContainer.init(size: textSize)
+            
+            layoutManager.addTextContainer(textContainer)
+            textStorage.addLayoutManager(layoutManager)
+            textContainer.lineFragmentPadding = 0
+            layoutManager.backgroundLayoutEnabled = true
+            
+            let glyphRange = layoutManager.glyphRange(for: textContainer)
+            var bounds = layoutManager.boundingRect(forGlyphRange: glyphRange, in: textContainer)
+            bounds.size.height += 28
+            bounds.size.width = collectionView.bounds.width
+            
+            tweet.itemHeight = bounds.height
+            return  bounds.size
+        }else {
+            return NSSize(width: collectionView.bounds.width, height: tweet.itemHeight)
+        }
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> NSSize {
