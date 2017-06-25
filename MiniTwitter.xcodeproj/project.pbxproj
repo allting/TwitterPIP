@@ -11,6 +11,9 @@
 		0F3E7B721EFD6B1E00240C60 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F3E7B711EFD6B1E00240C60 /* HeaderView.xib */; };
 		0F3E7B741EFD6C1400240C60 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3E7B731EFD6C1400240C60 /* FooterView.swift */; };
 		0F3E7B761EFD6C2600240C60 /* FooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F3E7B751EFD6C2600240C60 /* FooterView.xib */; };
+		0F6973991EFE5E3E003DE077 /* MiniTweet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0F6973971EFE5E3E003DE077 /* MiniTweet.xcdatamodeld */; };
+		0F69739F1EFE6240003DE077 /* Tweets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F69739E1EFE6240003DE077 /* Tweets.swift */; };
+		0F6973A31EFE6C22003DE077 /* TweetStringTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6973A21EFE6C22003DE077 /* TweetStringTransformer.swift */; };
 		0F76E0E51E86418A009600BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F76E0E41E86418A009600BA /* AppDelegate.swift */; };
 		0F76E0E71E86418A009600BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F76E0E61E86418A009600BA /* ViewController.swift */; };
 		0F76E0E91E86418A009600BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F76E0E81E86418A009600BA /* Assets.xcassets */; };
@@ -27,6 +30,9 @@
 		0F3E7B711EFD6B1E00240C60 /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		0F3E7B731EFD6C1400240C60 /* FooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		0F3E7B751EFD6C2600240C60 /* FooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FooterView.xib; sourceTree = "<group>"; };
+		0F6973981EFE5E3E003DE077 /* MiniTweet.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MiniTweet.xcdatamodel; sourceTree = "<group>"; };
+		0F69739E1EFE6240003DE077 /* Tweets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweets.swift; sourceTree = "<group>"; };
+		0F6973A21EFE6C22003DE077 /* TweetStringTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetStringTransformer.swift; sourceTree = "<group>"; };
 		0F76E0E11E86418A009600BA /* MiniTwitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniTwitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F76E0E41E86418A009600BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F76E0E61E86418A009600BA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +62,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F6973A01EFE64AB003DE077 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0F76E1211E86A36E009600BA /* CollectionViewItem.swift */,
+				0F76E1221E86A36E009600BA /* CollectionViewItem.xib */,
+				0F3E7B6F1EFD6AFE00240C60 /* HeaderView.swift */,
+				0F3E7B711EFD6B1E00240C60 /* HeaderView.xib */,
+				0F3E7B731EFD6C1400240C60 /* FooterView.swift */,
+				0F3E7B751EFD6C2600240C60 /* FooterView.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		0F6973A11EFE64BF003DE077 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				0F69739E1EFE6240003DE077 /* Tweets.swift */,
+				0F6973971EFE5E3E003DE077 /* MiniTweet.xcdatamodeld */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
 		0F76E0D81E86418A009600BA = {
 			isa = PBXGroup;
 			children = (
@@ -80,17 +108,14 @@
 			children = (
 				0F76E0E41E86418A009600BA /* AppDelegate.swift */,
 				0F76E0E61E86418A009600BA /* ViewController.swift */,
+				0F86E3F31EF68DE300C35CFC /* TweetViewController.swift */,
+				0F76E0EA1E86418A009600BA /* Main.storyboard */,
+				0F6973A11EFE64BF003DE077 /* CoreData */,
+				0F6973A01EFE64AB003DE077 /* Views */,
 				0F76E1201E864FE3009600BA /* MiniTwitter-Bridging-Header.h */,
 				0F76E0E81E86418A009600BA /* Assets.xcassets */,
-				0F76E0EA1E86418A009600BA /* Main.storyboard */,
 				0F76E0ED1E86418A009600BA /* Info.plist */,
-				0F76E1211E86A36E009600BA /* CollectionViewItem.swift */,
-				0F76E1221E86A36E009600BA /* CollectionViewItem.xib */,
-				0F86E3F31EF68DE300C35CFC /* TweetViewController.swift */,
-				0F3E7B6F1EFD6AFE00240C60 /* HeaderView.swift */,
-				0F3E7B711EFD6B1E00240C60 /* HeaderView.xib */,
-				0F3E7B731EFD6C1400240C60 /* FooterView.swift */,
-				0F3E7B751EFD6C2600240C60 /* FooterView.xib */,
+				0F6973A21EFE6C22003DE077 /* TweetStringTransformer.swift */,
 			);
 			path = MiniTwitter;
 			sourceTree = "<group>";
@@ -260,6 +285,9 @@
 				0F3E7B741EFD6C1400240C60 /* FooterView.swift in Sources */,
 				0F3E7B701EFD6AFE00240C60 /* HeaderView.swift in Sources */,
 				0F76E1231E86A36E009600BA /* CollectionViewItem.swift in Sources */,
+				0F6973991EFE5E3E003DE077 /* MiniTweet.xcdatamodeld in Sources */,
+				0F69739F1EFE6240003DE077 /* Tweets.swift in Sources */,
+				0F6973A31EFE6C22003DE077 /* TweetStringTransformer.swift in Sources */,
 				0F86E3F41EF68DE300C35CFC /* TweetViewController.swift in Sources */,
 				0F76E11F1E864E45009600BA /* WAYTheDarkSide.m in Sources */,
 				0F76E0E51E86418A009600BA /* AppDelegate.swift in Sources */,
@@ -424,6 +452,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0F6973971EFE5E3E003DE077 /* MiniTweet.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0F6973981EFE5E3E003DE077 /* MiniTweet.xcdatamodel */,
+			);
+			currentVersion = 0F6973981EFE5E3E003DE077 /* MiniTweet.xcdatamodel */;
+			path = MiniTweet.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0F76E0D91E86418A009600BA /* Project object */;
 }
