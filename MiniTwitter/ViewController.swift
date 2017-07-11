@@ -460,7 +460,8 @@ extension ViewController : NSCollectionViewDelegateFlowLayout {
         if tweet.itemHeight == 0 {
             let string = tweet.text
             
-            let textSize = NSMakeSize(collectionView.bounds.width-25, CGFloat(Float.greatestFiniteMagnitude))
+            // TODO: Remove Magic number 24
+            let textSize = NSMakeSize(collectionView.bounds.width-24, CGFloat(Float.greatestFiniteMagnitude))
             let textStorage = NSTextStorage.init(attributedString: attributedString(string!))
             let layoutManager = NSLayoutManager.init()
             let textContainer = NSTextContainer.init(size: textSize)
@@ -473,7 +474,7 @@ extension ViewController : NSCollectionViewDelegateFlowLayout {
             let glyphRange = layoutManager.glyphRange(for: textContainer)
             var bounds = layoutManager.boundingRect(forGlyphRange: glyphRange, in: textContainer)
             // TODO: Optional
-            bounds.size.height += (28 + 7)  // 28: title height, 7: space of items
+            bounds.size.height += (28 + 3)  // 28: title height, 3: space of items
             bounds.size.width = collectionView.bounds.width
             
             tweet.itemHeight = bounds.height
