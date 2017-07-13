@@ -41,7 +41,9 @@ class CollectionViewItem: NSCollectionViewItem {
         view.layer?.backgroundColor = NSColor.clear.cgColor
 
         textTweet?.allowsEditingTextAttributes = true
-        textTweet?.isSelectable = true
+        // If isSelectable set to true, selectable mouse pointer on the Link appears,
+        // but no mouse events occur more than once.
+        textTweet?.isSelectable = false
         
         menuStackView?.detachesHiddenViews = true
         
@@ -104,6 +106,8 @@ class MyTextField: NSTextField {
     
     override func mouseDown(with event: NSEvent) {
         let point = self.convert(event.locationInWindow, from: nil)
+        Swift.print("mouseDown:\(point)")
+        
         let charIndex = referenceView.textContainer!.textView!.characterIndexForInsertion(at: point)
         if charIndex < self.attributedStringValue.length {
             let attributes = self.attributedStringValue.attributes(at: charIndex, effectiveRange: nil)
@@ -114,6 +118,12 @@ class MyTextField: NSTextField {
         super.mouseDown(with: event)
     }
     
+    override func mouseUp(with event: NSEvent) {
+        let point = self.convert(event.locationInWindow, from: nil)
+        Swift.print("mouseUp:\(point)")
+        
+        super.mouseUp(with: event)
+    }
 }
 
 
