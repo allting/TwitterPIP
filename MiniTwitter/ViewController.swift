@@ -37,6 +37,8 @@ class ViewController: NSViewController {
     
     var headerView: HeaderView? = nil
     
+    var loadingMoreData = false
+    
     static let formatter: TTTTimeIntervalFormatter = {
         let formatter = TTTTimeIntervalFormatter()
         formatter.locale = NSLocale.current
@@ -92,6 +94,8 @@ class ViewController: NSViewController {
         
         configureCollectionView()
         adjustTrackingArea()
+        self.collectionView.enclosingScrollView?.postsBoundsChangedNotifications = true
+        NotificationCenter.default.addObserver(self, selector: #selector(self.boundsDidChange), name: .NSViewBoundsDidChange, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.windowDidChange), name: .NSWindowDidResize, object: nil)
         
@@ -272,6 +276,37 @@ class ViewController: NSViewController {
         }, failure: failureHandler)
     }
     
+    func loadMore(){
+        let since = self.tweets.last?.since
+        print("loadMore - \(String(describing: since))")
+        let failureHandler: (Error) -> Void = {
+            self.loadingMoreData = false
+            print($0.localizedDescription)
+        }
+        
+        self.swifter.getHomeTimeline(count: 20, sinceID: nil, maxID: since, success: { statuses in
+            //            print(statuses)
+            guard let tweets = statuses.array else { return }
+            if tweets.count == 0 {
+                return
+            }
+            
+            var temp: [Tweet] = tweets.map {
+                let tweet = Tweet()
+                tweet.text = $0["text"].string!
+                tweet.name = $0["user"]["name"].string!
+                tweet.screenName = $0["user"]["screen_name"].string!
+                tweet.since = $0["id_str"].string!
+                //                tweet.createdAt = $0["created_at"].string!
+                return tweet
+            }
+            
+            temp.removeFirst()
+            self.tweets = self.tweets + temp
+            self.loadingMoreData = false
+        }, failure: failureHandler)
+    }
+    
     fileprivate func attributedString(_ string: String) -> NSAttributedString{
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineBreakMode = .byWordWrapping
@@ -310,6 +345,21 @@ class ViewController: NSViewController {
 
         self.headerView?.frame.size.width = self.collectionView.frame.size.width
         self.headerView?.needsLayout = true
+    }
+
+    func boundsDidChange() {
+        if loadingMoreData {
+            return
+        }
+        
+        let visibleItems = self.collectionView.indexPathsForVisibleItems()
+        for indexPath in visibleItems {
+            if self.tweets.count - 1 <= indexPath.item {
+                self.loadMore()
+                loadingMoreData = true
+                break
+            }
+        }
     }
     
     func windowDidChange() {
