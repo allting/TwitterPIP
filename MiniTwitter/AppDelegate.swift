@@ -29,18 +29,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.isMovableByWindowBackground = true
         window.level = Int(CGWindowLevelForKey(.floatingWindow))
         
-//        contentView = window.contentView as! NSVisualEffectView
-//        
-//        self.contentView?.blendingMode = NSVisualEffectBlendingMode.behindWindow
-//        self.contentView?.state = NSVisualEffectState.active
-  
-//        let blurryView = NSVisualEffectView(frame: NSRect(x: 0, y: 0, width: 800, height: 600))
-//        blurryView.blendingMode = NSVisualEffectBlendingMode.behindWindow
-//        blurryView.material = NSVisualEffectMaterial.dark
-//        blurryView.state = NSVisualEffectState.active
-//        
-//        window.contentView?.addSubview(blurryView)
-
         WAYTheDarkSide.welcomeApplication({
             self.window.appearance = NSAppearance.init(named: NSAppearanceNameVibrantDark)
             self.contentView?.blendingMode = NSVisualEffectBlendingMode.behindWindow

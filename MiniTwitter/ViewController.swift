@@ -99,6 +99,12 @@ class ViewController: NSViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.windowDidChange), name: .NSWindowDidResize, object: nil)
         
+        self.view.window?.makeFirstResponder(self.collectionView)
+        
+        NSEvent.addLocalMonitorForEvents(matching: .keyDown) {
+            self.keyDown(with: $0)
+            return $0
+        }
 
         let failureHandler: (Error) -> Void = { print($0.localizedDescription) }
 
@@ -371,6 +377,65 @@ class ViewController: NSViewController {
         self.tweets = tweetArray
     }
 
+    override func keyDown(with event: NSEvent) {
+        if event.modifierFlags.contains(.command) {
+            switch event.keyCode {
+            case 126:
+                self.collectionView.scrollToItems(at: [IndexPath(item: 0, section: 0)], scrollPosition: .top)
+            case 125:
+                self.collectionView.scrollToItems(at: [IndexPath(item: self.tweets.count-1, section: 0)], scrollPosition: .bottom)
+            default:
+                break
+            }
+        }else {
+            switch event.keyCode {
+            case 126:   // Up
+                let indexPaths = self.collectionView.indexPathsForVisibleItems()
+                if indexPaths.count == 0 {
+                    return
+                }
+                
+                var minIndexPath = indexPaths.first
+                for (_, indexPath) in indexPaths.enumerated() {
+                    if indexPath.item < (minIndexPath?.item)! {
+                        minIndexPath = indexPath
+                    }
+                }
+                
+                if minIndexPath?.item == 0 {
+                    return
+                }
+                
+                let newIndexPath = IndexPath(item: (minIndexPath?.item)!-1, section: 0)
+                self.collectionView.selectItems(at: [newIndexPath], scrollPosition: .top)
+                self.collectionView.scrollToItems(at: [newIndexPath], scrollPosition: .top)
+            case 125:   // Down
+                let indexPaths = self.collectionView.indexPathsForVisibleItems()
+                if indexPaths.count == 0 {
+                    return;
+                }
+                
+                var maxIndexPath = indexPaths.first
+                for (_, indexPath) in indexPaths.enumerated() {
+                    if (maxIndexPath?.item)! < indexPath.item{
+                        maxIndexPath = indexPath
+                    }
+                }
+                
+                if maxIndexPath?.item == self.tweets.count - 1 {
+                    return
+                }
+                
+                let newIndexPath = IndexPath(item: (maxIndexPath?.item)!+1, section: 0)
+                self.collectionView.selectItems(at: [newIndexPath], scrollPosition: .bottom)
+                self.collectionView.scrollToItems(at: [newIndexPath], scrollPosition: .bottom)
+            default:
+                break
+            }
+        }
+        super.keyUp(with: event)
+    }
+    
     override func mouseEntered(with event: NSEvent) {
         var mouseOverItemIndex = NSNotFound
         let point = self.collectionView.convert(event.locationInWindow, from: nil)
