@@ -213,11 +213,25 @@ class ViewController: NSViewController {
             print("Reply")
 //            let twitterService = NSSharingService(named: NSSharingServiceNamePostOnTwitter)
 //            twitterService?.delegate = self
-//            twitterService?.recipients = [tweet.screenName]
+//            twitterService?.recipients = [tweet.since]
 //            twitterService?.perform(withItems: [tweet.text])
             
 
             self.performSegue(withIdentifier: "showTweetWindowController", sender: tweet)
+//            self.tweetWindowController.contentViewController?.representedObject = tweet
+//            self.tweetWindowController.showWindow(self)
+//            let tweet = userInfo["Tweet"] as! Tweet
+//            let reply = userInfo["Reply"] as! String
+//            let sender = userInfo["Sender"] as! NSView
+//            
+//            swifter.postTweet(status: reply, inReplyToStatusID: tweet.since, coordinate: nil, placeID: nil, displayCoordinates: false, trimUser: nil, media_ids: [], success: { (JSON) in
+//                print("succeeded reply")
+//                sender.window?.close()
+//            }) { (Error) in
+//                print("failed reply")
+//                sender.window?.close()
+//            }
+
             case "Retweet":
                 swifter.retweetTweet(forID: tweet.since, trimUser: false, success: { (JSON) in
                     tweet.retweeted = !tweet.retweeted

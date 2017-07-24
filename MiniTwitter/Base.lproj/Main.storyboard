@@ -749,15 +749,19 @@
         <!--Window Controller-->
         <scene sceneID="z2T-rm-voc">
             <objects>
-                <windowController storyboardIdentifier="TweetWindowController" id="PIJ-dp-yhM" sceneMemberID="viewController">
-                    <window key="window" title="Post Tweet" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="DJe-xj-7lY">
+                <windowController storyboardIdentifier="TweetWindowController" id="PIJ-dp-yhM" customClass="TweetWindowController" customModule="MiniTwitter" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Post Tweet" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="DJe-xj-7lY">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <rect key="contentRect" x="1070" y="640" width="300" height="200"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
                         <value key="minSize" type="size" width="200" height="170"/>
                         <value key="maxSize" type="size" width="500" height="450"/>
+                        <connections>
+                            <outlet property="delegate" destination="PIJ-dp-yhM" id="v4s-cC-DIC"/>
+                        </connections>
                     </window>
                     <connections>
+                        <outlet property="window" destination="DJe-xj-7lY" id="rGz-w7-IS5"/>
                         <segue destination="OVa-w6-Pnc" kind="relationship" relationship="window.shadowedContentViewController" id="PIy-cI-GB4"/>
                     </connections>
                 </windowController>
@@ -770,95 +774,70 @@
             <objects>
                 <viewController storyboardIdentifier="TweetViewController" id="OVa-w6-Pnc" customClass="TweetViewController" customModule="MiniTwitter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" autoresizesSubviews="NO" id="Oqh-MH-Zkh" customClass="NSVisualEffectView">
-                        <rect key="frame" x="0.0" y="0.0" width="486" height="180"/>
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="180"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <stackView distribution="fillProportionally" orientation="vertical" alignment="trailing" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UHp-pX-hCV">
-                                <rect key="frame" x="0.0" y="0.0" width="486" height="180"/>
-                                <subviews>
-                                    <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYd-jf-pzf">
-                                        <rect key="frame" x="0.0" y="82" width="486" height="98"/>
-                                        <clipView key="contentView" id="uY6-Kl-ogi">
-                                            <rect key="frame" x="0.0" y="0.0" width="486" height="98"/>
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7g-jL-w1C">
+                                <rect key="frame" x="0.0" y="38" width="350" height="117"/>
+                                <clipView key="contentView" id="vzs-Uu-mHX">
+                                    <rect key="frame" x="1" y="1" width="348" height="115"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="TAv-vS-rgH">
+                                            <rect key="frame" x="0.0" y="0.0" width="348" height="115"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <textView importsGraphics="NO" richText="NO" usesFontPanel="YES" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="MNd-8t-ebi">
-                                                    <rect key="frame" x="0.0" y="-1" width="486" height="98"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <size key="minSize" width="486" height="98"/>
-                                                    <size key="maxSize" width="486" height="10000000"/>
-                                                    <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                </textView>
-                                            </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </clipView>
-                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="4Si-ca-C3m">
-                                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="aBi-fh-KJ8">
-                                            <rect key="frame" x="470" y="0.0" width="16" height="98"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                    </scrollView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="T0J-FZ-3XX">
-                                        <rect key="frame" x="0.0" y="30" width="486" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="csg-ci-9wt"/>
-                                        </constraints>
-                                    </customView>
-                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tFk-g0-Tar">
-                                        <rect key="frame" x="0.0" y="0.0" width="486" height="22"/>
-                                        <subviews>
-                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYa-Om-ig9">
-                                                <rect key="frame" x="0.0" y="0.0" width="335" height="22"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="PhE-if-9dL">
-                                                    <font key="font" metaFont="system"/>
-                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dog-2h-NUm">
-                                                <rect key="frame" x="337" y="-6.5" width="82" height="32"/>
-                                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KXT-9B-soK">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                    <string key="keyEquivalent" base64-UTF8="YES">
+                                            <size key="minSize" width="348" height="115"/>
+                                            <size key="maxSize" width="495" height="10000000"/>
+                                            <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        </textView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="TgA-uL-4nj">
+                                    <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="q4W-ps-QrY">
+                                    <rect key="frame" x="333" y="1" width="16" height="115"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LQD-uJ-f3U">
+                                <rect key="frame" x="132" y="9" width="174" height="21"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBp-Qm-ehx">
+                                        <rect key="frame" x="-2" y="4" width="27" height="17"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="140" id="m0l-fA-kjv">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dog-2h-NUm">
+                                        <rect key="frame" x="25" y="-7" width="82" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KXT-9B-soK">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                            <string key="keyEquivalent" base64-UTF8="YES">
 Gw
 </string>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="cancel:" target="OVa-w6-Pnc" id="U0g-Cl-5Zb"/>
-                                                </connections>
-                                            </button>
-                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ma8-Gy-Bm1">
-                                                <rect key="frame" x="415" y="-6.5" width="77" height="32"/>
-                                                <buttonCell key="cell" type="push" title="Tweet" bezelStyle="rounded" imagePosition="right" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Q5e-Ul-bHa">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="replyTweet:" target="OVa-w6-Pnc" id="bx9-wk-UMk"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <visibilityPriorities>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                        </visibilityPriorities>
-                                        <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                        </customSpacing>
-                                    </stackView>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="cancel:" target="OVa-w6-Pnc" id="U0g-Cl-5Zb"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ma8-Gy-Bm1">
+                                        <rect key="frame" x="103" y="-7" width="77" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Tweet" bezelStyle="rounded" imagePosition="right" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Q5e-Ul-bHa">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="replyTweet:" target="OVa-w6-Pnc" id="bx9-wk-UMk"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="T0J-FZ-3XX" firstAttribute="leading" secondItem="UHp-pX-hCV" secondAttribute="leading" id="GCS-yO-gyE"/>
-                                    <constraint firstItem="dYd-jf-pzf" firstAttribute="leading" secondItem="UHp-pX-hCV" secondAttribute="leading" id="kSD-ii-qk3"/>
-                                </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
@@ -872,19 +851,23 @@ Gw
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="UHp-pX-hCV" secondAttribute="trailing" id="fV1-TK-jyf"/>
-                            <constraint firstItem="UHp-pX-hCV" firstAttribute="leading" secondItem="Oqh-MH-Zkh" secondAttribute="leading" id="iLB-W6-hKy"/>
-                            <constraint firstItem="UHp-pX-hCV" firstAttribute="top" secondItem="Oqh-MH-Zkh" secondAttribute="top" id="oUF-eO-Qh8"/>
-                            <constraint firstAttribute="bottom" secondItem="UHp-pX-hCV" secondAttribute="bottom" id="rEh-sk-myA"/>
+                            <constraint firstAttribute="bottom" secondItem="LQD-uJ-f3U" secondAttribute="bottom" constant="9" id="1d4-tI-zGT"/>
+                            <constraint firstAttribute="trailing" secondItem="LQD-uJ-f3U" secondAttribute="trailing" constant="44" id="BIq-uJ-GUe"/>
+                            <constraint firstItem="b7g-jL-w1C" firstAttribute="top" secondItem="Oqh-MH-Zkh" secondAttribute="top" constant="25" id="Ke3-dP-xaV"/>
+                            <constraint firstItem="b7g-jL-w1C" firstAttribute="leading" secondItem="Oqh-MH-Zkh" secondAttribute="leading" id="Zzp-re-RZP"/>
+                            <constraint firstItem="LQD-uJ-f3U" firstAttribute="top" secondItem="b7g-jL-w1C" secondAttribute="bottom" constant="8" symbolic="YES" id="lVo-kz-vtD"/>
+                            <constraint firstAttribute="trailing" secondItem="b7g-jL-w1C" secondAttribute="trailing" id="mVn-XK-5k7"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="replyView" destination="MNd-8t-ebi" id="uTY-IR-fU8"/>
+                        <outlet property="contentView" destination="Oqh-MH-Zkh" id="410-sr-1Gd"/>
+                        <outlet property="countLabel" destination="YBp-Qm-ehx" id="37k-UP-rMG"/>
+                        <outlet property="replyView" destination="TAv-vS-rgH" id="BLS-Q5-Aq5"/>
                     </connections>
                 </viewController>
                 <customObject id="7XR-kb-RuF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="299" y="1252"/>
+            <point key="canvasLocation" x="231" y="1252"/>
         </scene>
     </scenes>
 </document>

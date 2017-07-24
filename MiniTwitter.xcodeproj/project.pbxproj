@@ -21,6 +21,7 @@
 		0F76E11F1E864E45009600BA /* WAYTheDarkSide.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F76E11E1E864E45009600BA /* WAYTheDarkSide.m */; };
 		0F76E1231E86A36E009600BA /* CollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F76E1211E86A36E009600BA /* CollectionViewItem.swift */; };
 		0F76E1241E86A36E009600BA /* CollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F76E1221E86A36E009600BA /* CollectionViewItem.xib */; };
+		0F85DFDE1F20F901007F4EDA /* TweetWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F85DFDC1F20F901007F4EDA /* TweetWindowController.swift */; };
 		0F86E3F41EF68DE300C35CFC /* TweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F86E3F31EF68DE300C35CFC /* TweetViewController.swift */; };
 		71148E6A6DD0495EC0275695 /* Pods_MiniTwitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 486591CF4F3C21763E7F00C0 /* Pods_MiniTwitter.framework */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,7 @@
 		0F76E1201E864FE3009600BA /* MiniTwitter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MiniTwitter-Bridging-Header.h"; sourceTree = "<group>"; };
 		0F76E1211E86A36E009600BA /* CollectionViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewItem.swift; sourceTree = "<group>"; };
 		0F76E1221E86A36E009600BA /* CollectionViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewItem.xib; sourceTree = "<group>"; };
+		0F85DFDC1F20F901007F4EDA /* TweetWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetWindowController.swift; sourceTree = "<group>"; };
 		0F86E3F31EF68DE300C35CFC /* TweetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetViewController.swift; sourceTree = "<group>"; };
 		486591CF4F3C21763E7F00C0 /* Pods_MiniTwitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniTwitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F2548F3197BFFA20041964C /* Pods-MiniTwitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniTwitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiniTwitter/Pods-MiniTwitter.debug.xcconfig"; sourceTree = "<group>"; };
@@ -108,8 +110,9 @@
 			children = (
 				0F76E0E41E86418A009600BA /* AppDelegate.swift */,
 				0F76E0E61E86418A009600BA /* ViewController.swift */,
-				0F86E3F31EF68DE300C35CFC /* TweetViewController.swift */,
 				0F76E0EA1E86418A009600BA /* Main.storyboard */,
+				0F86E3F31EF68DE300C35CFC /* TweetViewController.swift */,
+				0F85DFDC1F20F901007F4EDA /* TweetWindowController.swift */,
 				0F6973A11EFE64BF003DE077 /* CoreData */,
 				0F6973A01EFE64AB003DE077 /* Views */,
 				0F76E1201E864FE3009600BA /* MiniTwitter-Bridging-Header.h */,
@@ -286,6 +289,7 @@
 				0F3E7B701EFD6AFE00240C60 /* HeaderView.swift in Sources */,
 				0F76E1231E86A36E009600BA /* CollectionViewItem.swift in Sources */,
 				0F6973991EFE5E3E003DE077 /* MiniTweet.xcdatamodeld in Sources */,
+				0F85DFDE1F20F901007F4EDA /* TweetWindowController.swift in Sources */,
 				0F69739F1EFE6240003DE077 /* Tweets.swift in Sources */,
 				0F6973A31EFE6C22003DE077 /* TweetStringTransformer.swift in Sources */,
 				0F86E3F41EF68DE300C35CFC /* TweetViewController.swift in Sources */,
