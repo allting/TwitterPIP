@@ -531,6 +531,19 @@ class ViewController: NSViewController {
         // Update the view, if already loaded.
         }
     }
+    
+    override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        return true
+    }
+
+    @IBAction func didSelectFindTweet(_ sender : Any?) {
+        self.collectionView.scroll(NSMakePoint(0, 0))
+        self.view.window?.makeFirstResponder(self.headerView?.searchField);
+    }
+    
+    override func cancelOperation(_ sender: Any?) {
+        self.view.window?.makeFirstResponder(self.collectionView);
+    }
 }
 
 extension ViewController : NSCollectionViewDataSource {
