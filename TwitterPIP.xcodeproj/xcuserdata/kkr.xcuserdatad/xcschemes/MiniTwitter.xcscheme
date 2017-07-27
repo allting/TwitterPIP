@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0F76E0E01E86418A009600BA"
-               BuildableName = "MiniTwitter.app"
-               BlueprintName = "MiniTwitter"
-               ReferencedContainer = "container:MiniTwitter.xcodeproj">
+               BuildableName = "TwitterPIP.app"
+               BlueprintName = "TwitterPIP"
+               ReferencedContainer = "container:TwitterPIP.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0F76E0E01E86418A009600BA"
-            BuildableName = "MiniTwitter.app"
-            BlueprintName = "MiniTwitter"
-            ReferencedContainer = "container:MiniTwitter.xcodeproj">
+            BuildableName = "TwitterPIP.app"
+            BlueprintName = "TwitterPIP"
+            ReferencedContainer = "container:TwitterPIP.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0F76E0E01E86418A009600BA"
-            BuildableName = "MiniTwitter.app"
-            BlueprintName = "MiniTwitter"
-            ReferencedContainer = "container:MiniTwitter.xcodeproj">
+            BuildableName = "TwitterPIP.app"
+            BlueprintName = "TwitterPIP"
+            ReferencedContainer = "container:TwitterPIP.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0F76E0E01E86418A009600BA"
-            BuildableName = "MiniTwitter.app"
-            BlueprintName = "MiniTwitter"
-            ReferencedContainer = "container:MiniTwitter.xcodeproj">
+            BuildableName = "TwitterPIP.app"
+            BlueprintName = "TwitterPIP"
+            ReferencedContainer = "container:TwitterPIP.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

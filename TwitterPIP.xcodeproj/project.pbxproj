@@ -35,7 +35,7 @@
 		0F6973981EFE5E3E003DE077 /* MiniTweet.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MiniTweet.xcdatamodel; sourceTree = "<group>"; };
 		0F69739E1EFE6240003DE077 /* Tweets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweets.swift; sourceTree = "<group>"; };
 		0F6973A21EFE6C22003DE077 /* TweetStringTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetStringTransformer.swift; sourceTree = "<group>"; };
-		0F76E0E11E86418A009600BA /* MiniTwitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniTwitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F76E0E11E86418A009600BA /* TwitterPIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterPIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F76E0E41E86418A009600BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F76E0E61E86418A009600BA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0F76E0E81E86418A009600BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 		0F76E0E21E86418A009600BA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0F76E0E11E86418A009600BA /* MiniTwitter.app */,
+				0F76E0E11E86418A009600BA /* TwitterPIP.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -164,9 +164,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0F76E0E01E86418A009600BA /* MiniTwitter */ = {
+		0F76E0E01E86418A009600BA /* TwitterPIP */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0F76E0F01E86418A009600BA /* Build configuration list for PBXNativeTarget "MiniTwitter" */;
+			buildConfigurationList = 0F76E0F01E86418A009600BA /* Build configuration list for PBXNativeTarget "TwitterPIP" */;
 			buildPhases = (
 				8E13B1D29B5BA11EECE16B43 /* [CP] Check Pods Manifest.lock */,
 				0F76E0DD1E86418A009600BA /* Sources */,
@@ -179,9 +179,9 @@
 			);
 			dependencies = (
 			);
-			name = MiniTwitter;
+			name = TwitterPIP;
 			productName = MiniTwitter;
-			productReference = 0F76E0E11E86418A009600BA /* MiniTwitter.app */;
+			productReference = 0F76E0E11E86418A009600BA /* TwitterPIP.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -201,7 +201,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0F76E0DC1E86418A009600BA /* Build configuration list for PBXProject "MiniTwitter" */;
+			buildConfigurationList = 0F76E0DC1E86418A009600BA /* Build configuration list for PBXProject "TwitterPIP" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -214,7 +214,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0F76E0E01E86418A009600BA /* MiniTwitter */,
+				0F76E0E01E86418A009600BA /* TwitterPIP */,
 			);
 		};
 /* End PBXProject section */
@@ -411,12 +411,14 @@
 			baseConfigurationReference = 6F2548F3197BFFA20041964C /* Pods-MiniTwitter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 33RYLHA7SK;
 				INFOPLIST_FILE = MiniTwitter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.allting.MiniTwitter;
+				PRODUCT_BUNDLE_IDENTIFIER = com.allting.TwitterPIP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MiniTwitter/MiniTwitter-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -427,12 +429,14 @@
 			baseConfigurationReference = F2B9DD8F4C70ABAE62462BEF /* Pods-MiniTwitter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 33RYLHA7SK;
 				INFOPLIST_FILE = MiniTwitter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.allting.MiniTwitter;
+				PRODUCT_BUNDLE_IDENTIFIER = com.allting.TwitterPIP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MiniTwitter/MiniTwitter-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -441,7 +445,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0F76E0DC1E86418A009600BA /* Build configuration list for PBXProject "MiniTwitter" */ = {
+		0F76E0DC1E86418A009600BA /* Build configuration list for PBXProject "TwitterPIP" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0F76E0EE1E86418A009600BA /* Debug */,
@@ -450,7 +454,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0F76E0F01E86418A009600BA /* Build configuration list for PBXNativeTarget "MiniTwitter" */ = {
+		0F76E0F01E86418A009600BA /* Build configuration list for PBXNativeTarget "TwitterPIP" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0F76E0F11E86418A009600BA /* Debug */,

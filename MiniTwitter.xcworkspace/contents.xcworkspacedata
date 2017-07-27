@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:MiniTwitter.xcodeproj">
+      location = "group:/Users/kkr/workspace/projects/minitwitter/TwitterPIP.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
