@@ -447,7 +447,6 @@ class ViewController: NSViewController {
                 break
             }
         }
-        super.keyUp(with: event)
     }
     
     override func mouseEntered(with event: NSEvent) {

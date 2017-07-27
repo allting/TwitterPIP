@@ -700,7 +700,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="251" height="214"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <collectionView focusRingType="none" id="twT-Oq-18j">
+                                        <collectionView focusRingType="none" id="twT-Oq-18j" customClass="TweetCollectionView" customModule="MiniTwitter" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="251" height="214"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" id="IXv-j2-awf">
