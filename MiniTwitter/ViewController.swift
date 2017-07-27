@@ -532,6 +532,9 @@ class ViewController: NSViewController {
     }
     
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        if menuItem.action == #selector(newTweet(_:)) {
+            return (self.view.window?.isVisible)!
+        }
         return true
     }
 
