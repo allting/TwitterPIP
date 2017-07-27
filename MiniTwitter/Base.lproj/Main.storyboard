@@ -61,12 +61,12 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="File" id="bib-Uj-vzu">
                                     <items>
-                                        <menuItem title="New" keyEquivalent="n" id="Was-JA-tGl">
+                                        <menuItem title="New" keyEquivalent="N" id="Was-JA-tGl">
                                             <connections>
-                                                <action selector="newDocument:" target="Ady-hI-5gd" id="4Si-XN-c54"/>
+                                                <action selector="newWindow:" target="Voe-Tx-rLC" id="hq9-70-2uw"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="New Tweet" keyEquivalent="N" id="Tc7-Y9-dRg">
+                                        <menuItem title="New Tweet" keyEquivalent="n" id="Tc7-Y9-dRg">
                                             <connections>
                                                 <action selector="newTweet:" target="Ady-hI-5gd" id="agO-da-SOU"/>
                                             </connections>

@@ -49,6 +49,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
     
+    @IBAction func newWindow(_ sender: Any?) {
+        window.makeKeyAndOrderFront(self)
+    }
+    
+    override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        if menuItem.action == #selector(newWindow(_:)) {
+            return !window.isVisible
+        }
+        return true
+    }
+    
     // MARK: - Core Data stack
     lazy var persistentContainer: NSPersistentContainer = {
         /*
