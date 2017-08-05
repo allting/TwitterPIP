@@ -416,7 +416,7 @@
 				DEVELOPMENT_TEAM = 33RYLHA7SK;
 				INFOPLIST_FILE = MiniTwitter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.allting.TwitterPIP;
+				PRODUCT_BUNDLE_IDENTIFIER = com.allting.macosTwitterPIP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MiniTwitter/MiniTwitter-Bridging-Header.h";
@@ -434,7 +434,7 @@
 				DEVELOPMENT_TEAM = 33RYLHA7SK;
 				INFOPLIST_FILE = MiniTwitter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.allting.TwitterPIP;
+				PRODUCT_BUNDLE_IDENTIFIER = com.allting.macosTwitterPIP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MiniTwitter/MiniTwitter-Bridging-Header.h";
