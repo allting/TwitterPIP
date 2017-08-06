@@ -2,8 +2,7 @@
 Twitter client with Swift 3 for macOS.
 
 ## Screenshot
-![Main](/screenshots/main.png | width=180)
-![Search](/screenshots/search.png | width=180)
+<img src="https://github.com/allting/TwitterPIP/blob/master/screenshots/main.png?raw=true" width="250"> <img src="https://github.com/allting/TwitterPIP/blob/master/screenshots/search.png?raw=true" width="250"> 
 
 ## How to build
 ```sh
