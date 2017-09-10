@@ -7,7 +7,7 @@ Twitter client with Swift 3 for macOS.
 ## How to build
 ```sh
 pod install
-open MiniTwitter.xcworkspace
+open TwitterPIP.xcworkspace
 ```
 
 
