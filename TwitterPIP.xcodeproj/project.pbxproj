@@ -11,7 +11,7 @@
 		0F3E7B721EFD6B1E00240C60 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F3E7B711EFD6B1E00240C60 /* HeaderView.xib */; };
 		0F3E7B741EFD6C1400240C60 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3E7B731EFD6C1400240C60 /* FooterView.swift */; };
 		0F3E7B761EFD6C2600240C60 /* FooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F3E7B751EFD6C2600240C60 /* FooterView.xib */; };
-		0F6973991EFE5E3E003DE077 /* MiniTweet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0F6973971EFE5E3E003DE077 /* MiniTweet.xcdatamodeld */; };
+		0F6973991EFE5E3E003DE077 /* TwitterPIP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0F6973971EFE5E3E003DE077 /* TwitterPIP.xcdatamodeld */; };
 		0F69739F1EFE6240003DE077 /* Tweets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F69739E1EFE6240003DE077 /* Tweets.swift */; };
 		0F6973A31EFE6C22003DE077 /* TweetStringTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6973A21EFE6C22003DE077 /* TweetStringTransformer.swift */; };
 		0F76E0E51E86418A009600BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F76E0E41E86418A009600BA /* AppDelegate.swift */; };
@@ -24,7 +24,7 @@
 		0F85DFDE1F20F901007F4EDA /* TweetWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F85DFDC1F20F901007F4EDA /* TweetWindowController.swift */; };
 		0F86E3F41EF68DE300C35CFC /* TweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F86E3F31EF68DE300C35CFC /* TweetViewController.swift */; };
 		0F90BD871F2A2A77003CA94B /* TweetCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F90BD861F2A2A77003CA94B /* TweetCollectionView.swift */; };
-		71148E6A6DD0495EC0275695 /* Pods_MiniTwitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 486591CF4F3C21763E7F00C0 /* Pods_MiniTwitter.framework */; };
+		439EC55F92D053FA616BE176 /* Pods_TwitterPIP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 486591CF4F3C21763E7F00C0 /* Pods_TwitterPIP.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +32,7 @@
 		0F3E7B711EFD6B1E00240C60 /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		0F3E7B731EFD6C1400240C60 /* FooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		0F3E7B751EFD6C2600240C60 /* FooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FooterView.xib; sourceTree = "<group>"; };
-		0F6973981EFE5E3E003DE077 /* MiniTweet.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MiniTweet.xcdatamodel; sourceTree = "<group>"; };
+		0F6973981EFE5E3E003DE077 /* TwitterPIP.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TwitterPIP.xcdatamodel; sourceTree = "<group>"; };
 		0F69739E1EFE6240003DE077 /* Tweets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweets.swift; sourceTree = "<group>"; };
 		0F6973A21EFE6C22003DE077 /* TweetStringTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetStringTransformer.swift; sourceTree = "<group>"; };
 		0F76E0E11E86418A009600BA /* TwitterPIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterPIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,15 +43,15 @@
 		0F76E0ED1E86418A009600BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F76E11D1E864E45009600BA /* WAYTheDarkSide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAYTheDarkSide.h; sourceTree = "<group>"; };
 		0F76E11E1E864E45009600BA /* WAYTheDarkSide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAYTheDarkSide.m; sourceTree = "<group>"; };
-		0F76E1201E864FE3009600BA /* MiniTwitter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MiniTwitter-Bridging-Header.h"; sourceTree = "<group>"; };
+		0F76E1201E864FE3009600BA /* TwitterPIP-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TwitterPIP-Bridging-Header.h"; sourceTree = "<group>"; };
 		0F76E1211E86A36E009600BA /* CollectionViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewItem.swift; sourceTree = "<group>"; };
 		0F76E1221E86A36E009600BA /* CollectionViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewItem.xib; sourceTree = "<group>"; };
 		0F85DFDC1F20F901007F4EDA /* TweetWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetWindowController.swift; sourceTree = "<group>"; };
 		0F86E3F31EF68DE300C35CFC /* TweetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetViewController.swift; sourceTree = "<group>"; };
 		0F90BD861F2A2A77003CA94B /* TweetCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCollectionView.swift; sourceTree = "<group>"; };
-		486591CF4F3C21763E7F00C0 /* Pods_MiniTwitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniTwitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6F2548F3197BFFA20041964C /* Pods-MiniTwitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniTwitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiniTwitter/Pods-MiniTwitter.debug.xcconfig"; sourceTree = "<group>"; };
-		F2B9DD8F4C70ABAE62462BEF /* Pods-MiniTwitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniTwitter.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiniTwitter/Pods-MiniTwitter.release.xcconfig"; sourceTree = "<group>"; };
+		486591CF4F3C21763E7F00C0 /* Pods_TwitterPIP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterPIP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F2548F3197BFFA20041964C /* Pods-TwitterPIP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterPIP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterPIP/Pods-TwitterPIP.debug.xcconfig"; sourceTree = "<group>"; };
+		F2B9DD8F4C70ABAE62462BEF /* Pods-TwitterPIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterPIP.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterPIP/Pods-TwitterPIP.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71148E6A6DD0495EC0275695 /* Pods_MiniTwitter.framework in Frameworks */,
+				439EC55F92D053FA616BE176 /* Pods_TwitterPIP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,7 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				0F69739E1EFE6240003DE077 /* Tweets.swift */,
-				0F6973971EFE5E3E003DE077 /* MiniTweet.xcdatamodeld */,
+				0F6973971EFE5E3E003DE077 /* TwitterPIP.xcdatamodeld */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -93,7 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				0F76E1171E864E0A009600BA /* Lib */,
-				0F76E0E31E86418A009600BA /* MiniTwitter */,
+				0F76E0E31E86418A009600BA /* TwitterPIP */,
 				0F76E0E21E86418A009600BA /* Products */,
 				9BF7FCDC8C07EEC9474E44A7 /* Pods */,
 				9CBE1033AD82040C5F7E561E /* Frameworks */,
@@ -108,7 +108,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0F76E0E31E86418A009600BA /* MiniTwitter */ = {
+		0F76E0E31E86418A009600BA /* TwitterPIP */ = {
 			isa = PBXGroup;
 			children = (
 				0F76E0E41E86418A009600BA /* AppDelegate.swift */,
@@ -118,12 +118,13 @@
 				0F85DFDC1F20F901007F4EDA /* TweetWindowController.swift */,
 				0F6973A11EFE64BF003DE077 /* CoreData */,
 				0F6973A01EFE64AB003DE077 /* Views */,
-				0F76E1201E864FE3009600BA /* MiniTwitter-Bridging-Header.h */,
+				0F76E1201E864FE3009600BA /* TwitterPIP-Bridging-Header.h */,
 				0F76E0E81E86418A009600BA /* Assets.xcassets */,
 				0F76E0ED1E86418A009600BA /* Info.plist */,
 				0F6973A21EFE6C22003DE077 /* TweetStringTransformer.swift */,
 			);
-			path = MiniTwitter;
+			name = TwitterPIP;
+			path = TwitterPIP;
 			sourceTree = "<group>";
 		};
 		0F76E1171E864E0A009600BA /* Lib */ = {
@@ -147,8 +148,8 @@
 		9BF7FCDC8C07EEC9474E44A7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6F2548F3197BFFA20041964C /* Pods-MiniTwitter.debug.xcconfig */,
-				F2B9DD8F4C70ABAE62462BEF /* Pods-MiniTwitter.release.xcconfig */,
+				6F2548F3197BFFA20041964C /* Pods-TwitterPIP.debug.xcconfig */,
+				F2B9DD8F4C70ABAE62462BEF /* Pods-TwitterPIP.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -156,7 +157,7 @@
 		9CBE1033AD82040C5F7E561E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				486591CF4F3C21763E7F00C0 /* Pods_MiniTwitter.framework */,
+				486591CF4F3C21763E7F00C0 /* Pods_TwitterPIP.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -180,7 +181,7 @@
 			dependencies = (
 			);
 			name = TwitterPIP;
-			productName = MiniTwitter;
+			productName = TwitterPIP;
 			productReference = 0F76E0E11E86418A009600BA /* TwitterPIP.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -247,7 +248,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MiniTwitter/Pods-MiniTwitter-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TwitterPIP/Pods-TwitterPIP-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2C733669FDC5D5D6ECD088C6 /* [CP] Copy Pods Resources */ = {
@@ -262,7 +263,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MiniTwitter/Pods-MiniTwitter-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TwitterPIP/Pods-TwitterPIP-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8E13B1D29B5BA11EECE16B43 /* [CP] Check Pods Manifest.lock */ = {
@@ -277,7 +278,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -291,7 +292,7 @@
 				0F3E7B741EFD6C1400240C60 /* FooterView.swift in Sources */,
 				0F3E7B701EFD6AFE00240C60 /* HeaderView.swift in Sources */,
 				0F76E1231E86A36E009600BA /* CollectionViewItem.swift in Sources */,
-				0F6973991EFE5E3E003DE077 /* MiniTweet.xcdatamodeld in Sources */,
+				0F6973991EFE5E3E003DE077 /* TwitterPIP.xcdatamodeld in Sources */,
 				0F85DFDE1F20F901007F4EDA /* TweetWindowController.swift in Sources */,
 				0F69739F1EFE6240003DE077 /* Tweets.swift in Sources */,
 				0F6973A31EFE6C22003DE077 /* TweetStringTransformer.swift in Sources */,
@@ -408,36 +409,36 @@
 		};
 		0F76E0F11E86418A009600BA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6F2548F3197BFFA20041964C /* Pods-MiniTwitter.debug.xcconfig */;
+			baseConfigurationReference = 6F2548F3197BFFA20041964C /* Pods-TwitterPIP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 33RYLHA7SK;
-				INFOPLIST_FILE = MiniTwitter/Info.plist;
+				INFOPLIST_FILE = TwitterPIP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.allting.macosTwitterPIP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "MiniTwitter/MiniTwitter-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "TwitterPIP/TwitterPIP-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		0F76E0F21E86418A009600BA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F2B9DD8F4C70ABAE62462BEF /* Pods-MiniTwitter.release.xcconfig */;
+			baseConfigurationReference = F2B9DD8F4C70ABAE62462BEF /* Pods-TwitterPIP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 33RYLHA7SK;
-				INFOPLIST_FILE = MiniTwitter/Info.plist;
+				INFOPLIST_FILE = TwitterPIP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.allting.macosTwitterPIP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "MiniTwitter/MiniTwitter-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "TwitterPIP/TwitterPIP-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -466,13 +467,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		0F6973971EFE5E3E003DE077 /* MiniTweet.xcdatamodeld */ = {
+		0F6973971EFE5E3E003DE077 /* TwitterPIP.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				0F6973981EFE5E3E003DE077 /* MiniTweet.xcdatamodel */,
+				0F6973981EFE5E3E003DE077 /* TwitterPIP.xcdatamodel */,
 			);
-			currentVersion = 0F6973981EFE5E3E003DE077 /* MiniTweet.xcdatamodel */;
-			path = MiniTweet.xcdatamodeld;
+			currentVersion = 0F6973981EFE5E3E003DE077 /* TwitterPIP.xcdatamodel */;
+			path = TwitterPIP.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

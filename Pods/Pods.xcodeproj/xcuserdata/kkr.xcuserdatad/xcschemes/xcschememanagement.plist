@@ -9,7 +9,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-MiniTwitter.xcscheme</key>
+		<key>Pods-TwitterPIP.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -22,7 +22,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0946246B0FAC3488C8E5A7E7434BFA90</key>
+		<key>14EFB5D262A5D148E45B16F4708EEB88</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -32,7 +32,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FD528C08D1B65E970A9F70B94BDFB186</key>
+		<key>798107B1558D9F1B0BF40384A449803F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

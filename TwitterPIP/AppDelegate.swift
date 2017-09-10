@@ -1,6 +1,6 @@
  //
 //  AppDelegate.swift
-//  MiniTwitter
+//  TwitterPIP
 //
 //  Created by kkr on 25/03/2017.
 //  Copyright © 2017 allting. All rights reserved.
@@ -68,7 +68,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
          */
-        let container = NSPersistentContainer(name: "MiniTwitter")
+        let container = NSPersistentContainer(name: "TwitterPIP")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
