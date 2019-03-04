@@ -160,7 +160,7 @@ class ViewController: NSViewController {
             }
         } else {
             let swifter = Swifter(consumerKey: "RErEmzj7ijDkJr60ayE2gjSHT", consumerSecret: "SbS0CHk11oJdALARa7NDik0nty4pXvAxdt7aj0R5y1gNzWaNEx")
-            swifter.authorize(with: URL(string: "swifter://success")!, success: { _ in
+            swifter.authorize(withCallback: URL(string: "swifter://success")!, success: { _ in
                 swifter.getHomeTimeline(count: 100, success: { statuses in
                     guard let tweets = statuses.array else { return }
                     self.tweets = tweets.map {
@@ -199,12 +199,12 @@ class ViewController: NSViewController {
         switch action {
             case "Favorite":
                 if tweet.favorited {
-                    swifter.unfavouriteTweet(forID: tweet.since, includeEntities: true, success: { (JSON) in
+                    swifter.unfavoriteTweet(forID: tweet.since, includeEntities: true, success: { (JSON) in
                         tweet.favorited = !tweet.favorited
                     }, failure: { (Error) in
                     })
                 } else {
-                    swifter.favouriteTweet(forID: tweet.since, includeEntities: true, success: { (JSON) in
+                    swifter.favoriteTweet(forID: tweet.since, includeEntities: true, success: { (JSON) in
                         tweet.favorited = !tweet.favorited
                     }, failure: { (Error) in
                     })
@@ -254,7 +254,7 @@ class ViewController: NSViewController {
         let reply = userInfo["Reply"] as! String
         let sender = userInfo["Sender"] as! NSView
 
-        swifter.postTweet(status: reply, inReplyToStatusID: tweet.since, coordinate: nil, placeID: nil, displayCoordinates: false, trimUser: nil, media_ids: [], success: { (JSON) in
+        swifter.postTweet(status: reply, inReplyToStatusID: tweet.since, coordinate: nil, placeID: nil, displayCoordinates: false, trimUser: nil, success: { (JSON) in
             print("succeeded reply")
             sender.window?.close()
         }) { (Error) in

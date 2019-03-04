@@ -241,7 +241,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TwitterPIP/Pods-TwitterPIP-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-TwitterPIP/Pods-TwitterPIP-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FormatterKit/FormatterKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Swifter/Swifter.framework",
 			);
@@ -252,7 +252,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TwitterPIP/Pods-TwitterPIP-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TwitterPIP/Pods-TwitterPIP-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8E13B1D29B5BA11EECE16B43 /* [CP] Check Pods Manifest.lock */ = {
